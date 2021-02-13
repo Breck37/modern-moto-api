@@ -30,7 +30,7 @@ async function connectToDatabase(uri) {
 module.exports = async (req, res) => {
     const { email } = req.params;
 
-    const db = await connectToDatabase(process.env.LOCAL_MONGO_URI);
+    const db = await connectToDatabase(process.env.MONGO_URI);
 
     const user = await db.collection('users').findOne({ email });
 
