@@ -16,7 +16,10 @@ async function connectToDatabase(uri) {
   // If no connection is cached, create a new one
   const client = await MongoClient.connect(uri, { useNewUrlParser: true })
 
-  const url = new URL(uri).athname.substr(1);
+  const url = new URL(uri);
+  console.log({ url })
+
+//   .pathname.substr(1);
 
   // Select the database through the connection,
   // using the database path of the connection string
@@ -28,10 +31,12 @@ async function connectToDatabase(uri) {
 }
 
 module.exports = async (req, res) => {
-    console.log(req, req.query, process.env.MONGO_URI)
-    // const { email } = req.params;
+    console.log(req.query)
+    const { email } = req.query;
 
-    // const db = await connectToDatabase(process.env.MONGO_URI);
+    const db = await connectToDatabase(process.env.MONGO_URI);
+
+    return res.status(200).json({ success: true, email });
 
     // const user = await db.collection('users').findOne({ email });
 
