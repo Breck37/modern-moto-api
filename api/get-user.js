@@ -37,10 +37,11 @@ const createUser = async (db, { email }) => {
 
   const baseUser = {
     email,
+    username: email,
     currentMode: 1,
     pastResults: [],
   };
-
+  console.log({ baseUser })
   const result = await db.collection('users')
     .insertOne(baseUser);
 
