@@ -27,6 +27,27 @@ async function connectToDatabase(uri) {
   return db
 }
 
+const createUser = (db, { email }) => {
+  if (!email) {
+    return res.status(400).json({
+      success: false,
+      error: "No user to create",
+    });
+  }
+
+  const baseUser = {
+    email,
+    currentMode: 1,
+    pastResults: [],
+  };
+
+  const result = db.collection('users')
+    .save(baseUser);
+
+    console.log(result);
+    return result
+};
+
 module.exports = async (req, res) => {
     const { email } = req.query;
 
@@ -34,10 +55,12 @@ module.exports = async (req, res) => {
 
 
     const user = await db.collection('users').findOne({ email });
+    console.log({ user });
 
     if (!user || (Array.isArray(user) && !user.length)) {
-      const result = await createUser({ email });
-      return res.status(200).json(result);
+      const createUserResult = await createUser(db, { email });
+      console.log({ createUserResult })
+      return res.status(200).json({ success: true, message: 'created user', email });
     }
 
     return res.status(200).json({ success: true, user });
