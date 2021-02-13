@@ -17,7 +17,6 @@ async function connectToDatabase(uri) {
   const client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 
   const url = new URL(uri).pathname.substr(1);
-  console.log({ url })
 
   // Select the database through the connection,
   // using the database path of the connection string
@@ -29,19 +28,17 @@ async function connectToDatabase(uri) {
 }
 
 module.exports = async (req, res) => {
-    console.log(req.query)
     const { email } = req.query;
 
     const db = await connectToDatabase(process.env.MONGO_URI);
 
-    return res.status(200).json({ success: true, email });
 
-    // const user = await db.collection('users').findOne({ email });
+    const user = await db.collection('users').findOne({ email });
 
-    // if (!user || (Array.isArray(user) && !user.length)) {
-    //   const result = await createUser({ email });
-    //   return res.status(200).json(result);
-    // }
+    if (!user || (Array.isArray(user) && !user.length)) {
+      const result = await createUser({ email });
+      return res.status(200).json(result);
+    }
 
-    // return res.status(200).json({ success: true, user });
+    return res.status(200).json({ success: true, user });
   };
