@@ -28,17 +28,17 @@ async function connectToDatabase(uri) {
 }
 
 module.exports = async (req, res) => {
-    console.log(req, req.query)
+    console.log(req, req.query, process.env.MONGO_URI)
     // const { email } = req.params;
 
-    const db = await connectToDatabase(process.env.MONGO_URI);
+    // const db = await connectToDatabase(process.env.MONGO_URI);
 
-    const user = await db.collection('users').findOne({ email });
+    // const user = await db.collection('users').findOne({ email });
 
-    if (!user || (Array.isArray(user) && !user.length)) {
-      const result = await createUser({ email });
-      return res.status(200).json(result);
-    }
+    // if (!user || (Array.isArray(user) && !user.length)) {
+    //   const result = await createUser({ email });
+    //   return res.status(200).json(result);
+    // }
 
-    return res.status(200).json({ success: true, user });
+    // return res.status(200).json({ success: true, user });
   };
