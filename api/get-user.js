@@ -27,7 +27,7 @@ async function connectToDatabase(uri) {
   return db
 }
 
-const createUser = (db, { email }) => {
+const createUser = async (db, { email }) => {
   if (!email) {
     return res.status(400).json({
       success: false,
