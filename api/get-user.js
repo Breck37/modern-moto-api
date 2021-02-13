@@ -28,7 +28,8 @@ async function connectToDatabase(uri) {
 }
 
 module.exports = async (req, res) => {
-    const { email } = req.params;
+    console.log(req, req.query)
+    // const { email } = req.params;
 
     const db = await connectToDatabase(process.env.MONGO_URI);
 
