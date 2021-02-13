@@ -1,0 +1,13 @@
+{
+  "name": "modern-moto-api",
+  "version": "1.0.0",
+  "description": "api for modernmotofantasy.com",
+  "main": "index.js",
+  "repository": "https://github.com/Breck37/modern-moto-api",
+  "author": "Breck37",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "mongodb": "^3.6.4"
+  }
+}
