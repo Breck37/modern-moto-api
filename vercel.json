@@ -1,7 +1,0 @@
-{
-  "name": "modern-moto-api",
-  "version": 2,
-  "env": {
-    "MONGODB_URI": "@modern-moto-api-mongo-uri"
-  }
-}
