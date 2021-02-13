@@ -41,10 +41,10 @@ const createUser = (db, { email }) => {
     pastResults: [],
   };
 
-  const result = db.collection('users')
-    .save(baseUser);
+  const result = await db.collection('users')
+    .insertOne(baseUser);
 
-    console.log(result);
+    console.log('INSERT RESULT', result);
     return result
 };
 
