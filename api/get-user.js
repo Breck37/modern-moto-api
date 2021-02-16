@@ -36,6 +36,7 @@ const createUser = async (db, { email }) => {
   }
 
   const baseUser = {
+    archived: false,
     email,
     username: email,
     currentMode: 1,
