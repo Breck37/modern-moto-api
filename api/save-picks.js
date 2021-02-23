@@ -12,9 +12,9 @@ module.exports = async (req, res) => {
         totalPoints: 0
     }
 
-    const weeklyPicks = await db.collection('picks').insertOne(formattedUserPicks)
+    const userPicks = await db.collection('picks').insertOne(formattedUserPicks)
 
-    console.log(weeklyPicks)
+    console.log(userPicks)
 
-    res.status(200).json({ success: true, userPicks })
+    res.status(200).json({ success: true, userPicks, picks, email, week })
 }
