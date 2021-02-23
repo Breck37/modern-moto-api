@@ -1,7 +1,8 @@
 import connectToDatabase from './utils/connectToDatabase';
 
 module.exports = async (req, res) => {
-    const { email, picks, week } = req.query;
+    console.log('HIHIHIT')
+    const { email, picks, week } = req.body;
     console.log(picks, req.body, req.query)
     const db = await connectToDatabase(process.env.MONGO_URI);
 
@@ -12,9 +13,7 @@ module.exports = async (req, res) => {
         totalPoints: 0
     }
 
-    const userPicks = await db.collection('picks').insertOne(formattedUserPicks)
+    await db.collection('picks').insertOne(formattedUserPicks)
 
-    console.log(userPicks)
-
-    res.status(200).json({ success: true, userPicks, picks, email, week })
+    res.status(200).json({ success: true, picks, email, week })
 }
