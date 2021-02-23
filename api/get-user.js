@@ -1,31 +1,4 @@
-// Import Dependencies
-const MongoClient = require('mongodb').MongoClient
-
-// Create cached connection variable
-let cachedDb = null
-
-// A function for connecting to MongoDB,
-// taking a single parameter of the connection string
-async function connectToDatabase(uri) {
-  // If the database connection is cached,
-  // use it instead of creating a new connection
-  if (cachedDb) {
-    return cachedDb
-  }
-
-  // If no connection is cached, create a new one
-  const client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-
-  const url = new URL(uri).pathname.substr(1);
-
-  // Select the database through the connection,
-  // using the database path of the connection string
-  const db = await client.db(url)
-
-  // Cache the database connection and return the connection
-  cachedDb = db
-  return db
-}
+import connectToDatabase from './utils/connectToDatabase';
 
 const createUser = async (db, { email }) => {
   if (!email) {
@@ -42,7 +15,7 @@ const createUser = async (db, { email }) => {
     currentMode: 1,
     pastResults: [],
   };
-  console.log({ baseUser })
+
   const result = await db.collection('users')
     .insertOne(baseUser);
 
@@ -57,7 +30,6 @@ module.exports = async (req, res) => {
 
 
     const user = await db.collection('users').findOne({ email });
-    console.log({ user });
 
     if (!user || (Array.isArray(user) && !user.length)) {
       const createUserResult = await createUser(db, { email });
