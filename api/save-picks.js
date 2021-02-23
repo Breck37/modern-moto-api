@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
         email,
         week,
         bigBikePicks,
-        totalPoints: 0
+        totalPoints: bigBikePicks.reduce((total, currentPick) => total += currentPick.points, 0)
     }
 
     await db.collection('picks').insertOne(formattedUserPicks)
