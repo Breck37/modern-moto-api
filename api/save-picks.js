@@ -7,10 +7,12 @@ module.exports = async (req, res) => {
     const db = await connectToDatabase(process.env.MONGO_URI);
 
     const formattedUserPicks = {
-        email,
+        user: email,
         week,
+        year: new Date().getFullYear(),
         bigBikePicks,
-        totalPoints: bigBikePicks.reduce((total, currentPick) => total += currentPick.points, 0)
+        totalPoints: bigBikePicks.reduce((total, currentPick) => total += currentPick.points, 0),
+        created_at: new Date()
     }
 
     await db.collection('picks').insertOne(formattedUserPicks)

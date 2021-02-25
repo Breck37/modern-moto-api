@@ -13,7 +13,8 @@ const createUser = async (db, { email }) => {
     email,
     username: email,
     currentMode: 1,
-    pastResults: [],
+    leagues: [],
+    weeklyResults: [],
   };
 
   const result = await db.collection('users')
