@@ -31,7 +31,7 @@ module.exports = async (req, res) => {
 
 
     let user = await db.collection('users').findOne({ email });
-    const picks = await db.collection('picks').find({ user: email })
+    const picks = await db.collection('picks').find({ user: email }).toArray();
 
     console.log({user, picks})
     if (!user || (Array.isArray(user) && !user.length)) {
