@@ -26,14 +26,12 @@ const createUser = async (db, { email }) => {
 
 module.exports = async (req, res) => {
     const { email } = req.query;
-  console.log("HIT GIT USER")
     const db = await connectToDatabase(process.env.MONGO_URI);
 
 
     let user = await db.collection('users').findOne({ email });
     const picks = await db.collection('picks').find({ user: email }).toArray();
 
-    console.log({user, picks})
     if (!user || (Array.isArray(user) && !user.length)) {
       user = await createUser(db, { email });
       console.log({ createUserResult: user })
