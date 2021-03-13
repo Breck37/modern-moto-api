@@ -30,13 +30,13 @@ module.exports = async (req, res) => {
     const db = await connectToDatabase(process.env.MONGO_URI);
 
 
-    const user = await db.collection('users').findOne({ email });
+    let user = await db.collection('users').findOne({ email });
+    const picks = await db.collection('picks').findMany({ user: email })
 
     if (!user || (Array.isArray(user) && !user.length)) {
-      const createUserResult = await createUser(db, { email });
-      console.log({ createUserResult })
-      return res.status(200).json({ success: true, message: 'created user', email });
+      user = await createUser(db, { email });
+      console.log({ createUserResult: user })
     }
 
-    return res.status(200).json({ success: true, user });
+    return res.status(200).json({ success: true, user: { ...user, picks } });
   };
