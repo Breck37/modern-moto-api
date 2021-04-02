@@ -1,0 +1,1 @@
+<div>index.js in root</div>
