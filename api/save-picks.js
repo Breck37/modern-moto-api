@@ -13,6 +13,7 @@ module.exports = async (req, res) => {
         totalPoints: bigBikePicks.reduce((total, currentPick) => total += currentPick.points, 0),
         hasBeenEquated: false,
         league,
+        rank: null,
         created_at: new Date()
     }
 
