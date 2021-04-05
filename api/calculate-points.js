@@ -5,9 +5,9 @@ module.exports = async (req, res) => {
 
     const db = await connectToDatabase(process.env.MONGO_URI);
 
-    const currentWeekPicks = await db.collection('picks').find({ week }).toArray();
+    const currentWeekPicks = await db.collection('picks').find({ week: parseInt(week) }).toArray();
 
-    console.log({ currentWeekPicks });
+    console.log({ currentWeekPicks, week });
 
     res.status(200).json({ success: true, currentWeekPicks });
 }
