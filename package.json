@@ -9,5 +9,9 @@
   "private": false,
   "dependencies": {
     "mongodb": "^3.6.4"
+  },
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "eslint-plugin-react": "^7.23.1"
   }
 }
