@@ -1,7 +1,7 @@
 import connectToDatabase from './utils/connectToDatabase';
 
 module.exports = async (req, res) => {
-    const { email, bigBikePicks, week, league = "" } = req.body;
+    const { email, bigBikePicks, smallBikePicks = [], week, league = "" } = req.body;
 
     const db = await connectToDatabase(process.env.MONGO_URI);
 
@@ -10,7 +10,8 @@ module.exports = async (req, res) => {
         week,
         year: new Date().getFullYear(),
         bigBikePicks,
-        totalPoints: bigBikePicks.reduce((total, currentPick) => total += currentPick.points, 0),
+        smallBikePicks,
+        totalPoints: 0,
         hasBeenEquated: false,
         league,
         rank: null,
