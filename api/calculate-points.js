@@ -77,7 +77,7 @@ module.exports = async (req, res) => {
     const currentWeekPicks = await db.collection('picks').find({ week: parseInt(week), hasBeenEquated: false }).project({ user: 1, bigBikePicks: 1, league: 1, totalPoints: 1 }).toArray();
 
     // save race results to DB
-    await db.collection('results').updateOne({ week }, { $set: {raceResults, week} }, { upsert: true });
+    await db.collection('results').updateOne({ week }, { $set: { raceResults, week } }, { upsert: true });
 
     if (
         !currentWeekPicks || 
@@ -94,9 +94,10 @@ module.exports = async (req, res) => {
     const calculatedPicks = currentWeekPicks.map(equateWeeksPoints);
 
     // Save Calculated Picks
-    await calculatedPicks.map(async (pick) => {
+    await Promise.all(
+        await calculatedPicks.map(async (pick) => {
         const { bigBikePicks, totalPoints, hasBeenEquated } = pick;
-        await db.collection('picks').updateOne(
+        const updatedPick = await db.collection('picks').updateOne(
             { _id: pick._id }, 
             {
                 $set: {
@@ -105,8 +106,10 @@ module.exports = async (req, res) => {
                     hasBeenEquated
                 }
             }
-        )
-    });
+        );
+        return updatedPick;
+    })
+    );
 
     res.status(200).json({ success: true, currentWeekPicks, calculatedPicks, applicableResults, message: 'Picks Calculated!' });
 }
