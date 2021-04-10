@@ -28,15 +28,15 @@ const calculateTotal = (userPicks) => {
 }
 
 const checkSame = (userPick, topFive) => {
-  return topFive.find(result => result.riderName.trim() === userPick.riderName.trim() && result.position === userPick.position);
+  return topFive.find(result => result.name.trim() === userPick.name.trim() && result.position === userPick.position);
 }
 
 const checkDifferent = (userPick, topFive) => {
-  return topFive.find(result => result.riderName.trim() === userPick.riderName.trim() && result.position !== userPick.position);
+  return topFive.find(result => result.name.trim() === userPick.name.trim() && result.position !== userPick.position);
 }
 
 const checkKickers = (userPick, kickers) => {
-  return kickers.find(result => result.riderName.trim() === userPick.riderName.trim() && result.position === userPick.position);
+  return kickers.find(result => result.name.trim() === userPick.name.trim() && result.position === userPick.position);
 }
 
 const calculatePointsForUserPicks = (applicableResults) => {
