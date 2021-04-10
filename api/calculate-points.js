@@ -86,13 +86,10 @@ module.exports = async (req, res) => {
         res.status(200).json({ success: true, currentWeekPicks, message: 'No Picks To Calculate' });
         return;
     }
-    console.log({ raceResults, currentWeekPicks, conditional: 
-        !currentWeekPicks || 
-        (Array.isArray(currentWeekPicks) && !currentWeekPicks.length)
-         })
+
     const fastestLap = getFastestLap(raceResults.liveResults);
     const applicableResults = filterAndGetApplicableResults(raceResults.raceResults, fastestLap);
-
+    console.log({applicableResults})
     const equateWeeksPoints = calculatePointsForUserPicks(applicableResults);
 
     const calculatedPicks = currentWeekPicks.map(equateWeeksPoints);
