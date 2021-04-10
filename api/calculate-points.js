@@ -10,8 +10,9 @@ const getFastestLap = (results) => {
 }
 
 const filterAndGetApplicableResults = (results, fastestLap) => {
-    console.log(...results)
-    const applicableResults = results.filter(result => [1,2,3,4,5,10].includes(result.position || results.overall));
+    const applicableResults = results.filter(result => {
+        if(!result) return false;
+        return [1,2,3,4,5,10].includes(result.position || results.overall)});
     applicableResults.push(fastestLap);
     return applicableResults;
 }
@@ -90,7 +91,7 @@ module.exports = async (req, res) => {
 
     const fastestLap = getFastestLap(raceResults.liveResults);
     const applicableResults = filterAndGetApplicableResults(raceResults.raceResults, fastestLap);
-    console.log({applicableResults})
+    console.log({applicableResults, fastestLap})
     const equateWeeksPoints = calculatePointsForUserPicks(applicableResults);
 
     const calculatedPicks = currentWeekPicks.map(equateWeeksPoints);
