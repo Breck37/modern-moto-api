@@ -85,9 +85,9 @@ module.exports = async (req, res) => {
         ) {
         res.status(200).json({ success: true, currentWeekPicks, message: 'No Picks To Calculate' });
     }
-
-    const fastestLap = getFastestLap(raceResults);
-    const applicableResults = filterAndGetApplicableResults(raceResults, fastestLap);
+    console.log({ raceResults })
+    const fastestLap = getFastestLap(raceResults.liveResults);
+    const applicableResults = filterAndGetApplicableResults(raceResults.raceResults, fastestLap);
 
     const equateWeeksPoints = calculatePointsForUserPicks(applicableResults);
 
