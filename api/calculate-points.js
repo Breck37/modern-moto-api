@@ -10,6 +10,7 @@ const getFastestLap = (results) => {
 }
 
 const filterAndGetApplicableResults = (results, fastestLap) => {
+    console.log(...results)
     const applicableResults = results.filter(result => [1,2,3,4,5,10].includes(result.position));
     applicableResults.push(fastestLap);
     return applicableResults;
