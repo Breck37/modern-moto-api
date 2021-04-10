@@ -46,9 +46,9 @@ const calculatePointsForUserPicks = (applicableResults) => {
         const updatedPicks = userPicks.bigBikePicks.map((pick) => {
             const isKickerPick = pick.position === 10 || pick.position === 100;
 
-            const topFive = applicableResults.filter(result => result.position !== 10 && result.position !== 100);
+            const topFive = applicableResults.filter(Boolean).filter(result => result.position !== 10 && result.position !== 100);
 
-            const kickers = applicableResults.filter(result => result.position === 10 || result.position === 100);
+            const kickers = applicableResults.filter(Boolean).filter(result => result.position === 10 || result.position === 100);
 
            if (!isKickerPick && checkSame(pick, topFive)) {
                 return { ...pick, points: pointValues.same };
