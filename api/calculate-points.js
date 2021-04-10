@@ -10,7 +10,9 @@ const getFastestLap = (results) => {
 }
 
 const filterAndGetApplicableResults = (results, fastestLap) => {
-    const applicableResults = results.filter(result => [1,2,3,4,5,10].includes(result.position));
+    const applicableResults = results.filter(result => {
+        if(!result) return false;
+        return [1,2,3,4,5,10].includes(result.position || results.overall)});
     applicableResults.push(fastestLap);
     return applicableResults;
 }
@@ -26,15 +28,15 @@ const calculateTotal = (userPicks) => {
 }
 
 const checkSame = (userPick, topFive) => {
-  return topFive.find(result => result.riderName.trim() === userPick.riderName.trim() && result.position === userPick.position);
+  return topFive.find(result => result.name.trim() === userPick.riderName.trim() && result.position === userPick.position);
 }
 
 const checkDifferent = (userPick, topFive) => {
-  return topFive.find(result => result.riderName.trim() === userPick.riderName.trim() && result.position !== userPick.position);
+  return topFive.find(result => result.name.trim() === userPick.riderName.trim() && result.position !== userPick.position);
 }
 
 const checkKickers = (userPick, kickers) => {
-  return kickers.find(result => result.riderName.trim() === userPick.riderName.trim() && result.position === userPick.position);
+  return kickers.find(result => result.name.trim() === userPick.riderName.trim() && result.position === userPick.position);
 }
 
 const calculatePointsForUserPicks = (applicableResults) => {
@@ -44,9 +46,9 @@ const calculatePointsForUserPicks = (applicableResults) => {
         const updatedPicks = userPicks.bigBikePicks.map((pick) => {
             const isKickerPick = pick.position === 10 || pick.position === 100;
 
-            const topFive = applicableResults.filter(result => result.position !== 10 && result.position !== 100);
+            const topFive = applicableResults.filter(Boolean).filter(result => result.position !== 10 && result.position !== 100);
 
-            const kickers = applicableResults.filter(result => result.position === 10 || result.position === 100);
+            const kickers = applicableResults.filter(Boolean).filter(result => result.position === 10 || result.position === 100);
 
            if (!isKickerPick && checkSame(pick, topFive)) {
                 return { ...pick, points: pointValues.same };
@@ -84,11 +86,12 @@ module.exports = async (req, res) => {
         (Array.isArray(currentWeekPicks) && !currentWeekPicks.length)
         ) {
         res.status(200).json({ success: true, currentWeekPicks, message: 'No Picks To Calculate' });
+        return;
     }
 
-    const fastestLap = getFastestLap(raceResults);
-    const applicableResults = filterAndGetApplicableResults(raceResults, fastestLap);
-
+    const fastestLap = getFastestLap(raceResults.liveResults);
+    const applicableResults = filterAndGetApplicableResults(raceResults.raceResults, fastestLap);
+    console.log({applicableResults, fastestLap})
     const equateWeeksPoints = calculatePointsForUserPicks(applicableResults);
 
     const calculatedPicks = currentWeekPicks.map(equateWeeksPoints);
