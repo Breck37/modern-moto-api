@@ -50,7 +50,7 @@ const calculatePointsForUserPicks = (applicableResults) => {
 
             const kickers = applicableResults.filter(Boolean).filter(result => result.position === 10 || result.position === 100);
 
-           if (!isKickerPick && checkSame(pick, topFive)) {
+            if (!isKickerPick && checkSame(pick, topFive)) {
                 return { ...pick, points: pointValues.same };
             } else if (!isKickerPick && checkDifferent(pick, topFive)) {
                 return { ...pick, points: pointValues.different };
@@ -60,7 +60,8 @@ const calculatePointsForUserPicks = (applicableResults) => {
 
             return pick;
         });
-
+        console.log('CALCULATE', calculateTotal(updatedPicks))
+        console.log('UPDATED', updatedPicks)
         return {
             ...picksToCalculate,
             bigBikePicks: updatedPicks,
@@ -95,18 +96,18 @@ module.exports = async (req, res) => {
     const equateWeeksPoints = calculatePointsForUserPicks(applicableResults);
 
     const calculatedPicks = currentWeekPicks.map(equateWeeksPoints);
-
+    console.log({ calculatedPicks, applicableResults })
     // Save Calculated Picks
     await Promise.all(
         await calculatedPicks.map(async (pick) => {
-        const { bigBikePicks, totalPoints, hasBeenEquated } = pick;
+        const { bigBikePicks, totalPoints } = pick;
+        // const { bigBikePicks, totalPoints, hasBeenEquated } = pick;
         const updatedPick = await db.collection('picks').updateOne(
             { _id: pick._id }, 
             {
                 $set: {
                     bigBikePicks,
                     totalPoints,
-                    hasBeenEquated
                 }
             }
         );
