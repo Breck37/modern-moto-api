@@ -1,11 +1,8 @@
-import connectToDatabase from './utils/connectToDatabase';
+import connectToDatabase from "./utils/connectToDatabase";
 
 const createUser = async (db, { email }) => {
   if (!email) {
-    return res.status(400).json({
-      success: false,
-      error: "No user to create",
-    });
+    return { success: false, email };
   }
 
   const baseUser = {
@@ -17,25 +14,27 @@ const createUser = async (db, { email }) => {
     weeklyResults: [],
   };
 
-  const result = await db.collection('users')
-    .insertOne(baseUser);
+  const result = await db.collection("users").insertOne(baseUser);
 
-    console.log('INSERT RESULT', result);
-    return result
+  return result;
 };
 
 module.exports = async (req, res) => {
-    const { email } = req.query;
-    const db = await connectToDatabase(process.env.MONGO_URI);
+  const { email } = req.query;
+  const db = await connectToDatabase(process.env.MONGO_URI);
 
+  let user = await db.collection("users").findOne({ email });
+  const picks = await db.collection("picks").find({ user: email }).toArray();
 
-    let user = await db.collection('users').findOne({ email });
-    const picks = await db.collection('picks').find({ user: email }).toArray();
-
-    if (!user || (Array.isArray(user) && !user.length)) {
-      user = await createUser(db, { email });
-      console.log({ createUserResult: user })
+  if (!user || (Array.isArray(user) && !user.length)) {
+    user = await createUser(db, { email });
+    console.log({ createUserResult: user });
+    if (user.success === false) {
+      return res
+        .status(200)
+        .json({ success: false, message: "error saving user" });
     }
+  }
 
-    return res.status(200).json({ success: true, user: { ...user, picks } });
-  };
+  return res.status(200).json({ success: true, user: { ...user, picks } });
+};
