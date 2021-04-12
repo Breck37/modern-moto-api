@@ -8,7 +8,7 @@ const createUser = async (db, { email }) => {
   const baseUser = {
     archived: false,
     email,
-    username: email,
+    username: email?.split("@")[0],
     currentMode: 1,
     leagues: [],
     weeklyResults: [],
@@ -25,6 +25,14 @@ module.exports = async (req, res) => {
 
   let user = await db.collection("users").findOne({ email });
   const picks = await db.collection("picks").find({ user: email }).toArray();
+
+  if (Array.isArray(picks) && picks.length && picks[0].league) {
+    const leaguePicks = await db
+      .collection("picks")
+      .find({ league: picks[0].league })
+      .toArray();
+    user.leaguePicks = leaguePicks || null;
+  }
 
   if (!user || (Array.isArray(user) && !user.length)) {
     user = await createUser(db, { email });
