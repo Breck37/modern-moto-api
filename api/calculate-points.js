@@ -97,9 +97,9 @@ const assignRankings = (currentPicks) => {
   };
 
   const sortedPicks = currentPicks.sort(
-    (a, b) => a.totalPoints - b.totalPoints
+    (a, b) => b.totalPoints - a.totalPoints
   );
-  console.log({ sortedPicks });
+
   return sortedPicks.map((pick, i, arr) => {
     let rank = i + 1;
     const isAForwardTie = Boolean(
@@ -184,7 +184,7 @@ module.exports = async (req, res) => {
           $set: {
             bigBikePicks,
             totalPoints,
-            hasBeenEquated: false,
+            hasBeenEquated,
             rank,
           },
         }
