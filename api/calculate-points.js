@@ -39,7 +39,6 @@ const checkDifferent = (userPick, topFive) => {
 };
 
 const checkKickers = (userPick, kickers) => {
-  console.log({ kickers, userPick });
   return kickers.find(
     (result) =>
       result.name.trim() === userPick.riderName.trim() &&
@@ -131,14 +130,14 @@ module.exports = async (req, res) => {
   // Save Calculated Picks
   await Promise.all(
     await calculatedPicks.map(async (pick) => {
-      const { bigBikePicks, totalPoints } = pick;
-      // const { bigBikePicks, totalPoints, hasBeenEquated } = pick;
+      const { bigBikePicks, totalPoints, hasBeenEquated } = pick;
       const updatedPick = await db.collection("picks").updateOne(
         { _id: pick._id },
         {
           $set: {
             bigBikePicks,
             totalPoints,
+            hasBeenEquated,
           },
         }
       );
