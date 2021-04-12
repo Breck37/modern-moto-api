@@ -99,10 +99,7 @@ const assignRankings = (currentPicks) => {
   const sortedPicks = currentPicks.sort(
     (a, b) => a.totalPoints - b.totalPoints
   );
-  const backwardsPicks = currentPicks.sort(
-    (a, b) => b.totalPoints - a.totalPoints
-  );
-  console.log({ sortedPicks, backwardsPicks });
+  console.log({ sortedPicks });
   return sortedPicks.map((pick, i, arr) => {
     let rank = i + 1;
     const isAForwardTie = Boolean(
@@ -176,18 +173,19 @@ module.exports = async (req, res) => {
   const calculatedPicks = assignRankings(
     currentWeekPicks.map(equateWeeksPoints)
   );
-  console.log(calculatedPicks);
+
   // Save Calculated Picks
   await Promise.all(
     await calculatedPicks.map(async (pick) => {
-      const { bigBikePicks, totalPoints, hasBeenEquated } = pick;
+      const { bigBikePicks, totalPoints, hasBeenEquated, rank } = pick;
       const updatedPick = await db.collection("picks").updateOne(
         { _id: pick._id },
         {
           $set: {
             bigBikePicks,
             totalPoints,
-            hasBeenEquated,
+            hasBeenEquated: false,
+            rank,
           },
         }
       );
