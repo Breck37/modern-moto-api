@@ -20,16 +20,16 @@ const createUser = async (db, { email }) => {
 };
 
 module.exports = async (req, res) => {
-  const { email } = req.query;
+  const { email, week } = req.query;
   const db = await connectToDatabase(process.env.MONGO_URI);
 
   let user = await db.collection("users").findOne({ email });
   const picks = await db.collection("picks").find({ user: email }).toArray();
-
+  console.log({ week: parseInt(week) });
   if (Array.isArray(picks) && picks.length && picks[0].league) {
     const leaguePicks = await db
       .collection("picks")
-      .find({ league: picks[0].league })
+      .find({ league: picks[0].league, week: parseInt(week) })
       .toArray();
     user.leaguePicks = leaguePicks || null;
   }
