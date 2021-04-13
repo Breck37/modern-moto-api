@@ -24,23 +24,52 @@ module.exports = async (req, res) => {
   const db = await connectToDatabase(process.env.MONGO_URI);
 
   let user = await db.collection("users").findOne({ email });
-  const picks = await db.collection("picks").find({ user: email }).toArray();
-  console.log({ week: parseInt(week) });
+  const picks = await db
+    .collection("picks")
+    .find(
+      { user: email },
+      {
+        bigBikePicks: 1,
+        rank: 1,
+        totalPoints: 1,
+        user: 1,
+        league: 0,
+        smallBikePicks: 0,
+        week: 0,
+      }
+    )
+    .toArray();
+
   if (Array.isArray(picks) && picks.length && picks[0].league) {
+    const query = { league: picks[0].league };
+
+    if (week) {
+      query.week = parseInt(week);
+    }
+
     const leaguePicks = await db
       .collection("picks")
-      .find({ league: picks[0].league, week: parseInt(week) })
+      .find(query, {
+        bigBikePicks: 1,
+        rank: 1,
+        totalPoints: 1,
+        user: 1,
+        league: 0,
+        smallBikePicks: 0,
+        week: 0,
+      })
       .toArray();
     user.leaguePicks = leaguePicks || null;
   }
 
   if (!user || (Array.isArray(user) && !user.length)) {
     user = await createUser(db, { email });
-    console.log({ createUserResult: user });
     if (user.success === false) {
-      return res
-        .status(200)
-        .json({ success: false, message: "error saving user" });
+      return res.status(200).json({
+        success: false,
+        message: "error saving user",
+        user: user.email,
+      });
     }
   }
 
