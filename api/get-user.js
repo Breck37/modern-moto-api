@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
   const picks = await db
     .collection("picks")
     .find(
-      { user: email },
+      { user: user.username },
       {
         bigBikePicks: 1,
         rank: 1,
