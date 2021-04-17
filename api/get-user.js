@@ -83,7 +83,18 @@ module.exports = async (req, res) => {
         week: 0,
       })
       .toArray();
-    const sortedLeaguePicks = leaguePicks.reduce(compileLeaguePicks, {});
+    const sortedLeaguePicks = leaguePicks.reduce((leaguePicks, currentPick) => {
+      if (leaguePicks[currentPick.week]) {
+        leaguePicks[currentPick].push(currentPick);
+      } else {
+        leaguePicks[currentPick] = [currentPick];
+      }
+      console.log({
+        leaguePicks,
+        currentPick,
+      });
+      return leaguePicks;
+    }, {});
     // Object.fromEntries(
     //   Object.entries(leaguePicks.reduce(compileLeaguePicks, {})).map(
     //     sortLeaguePicks
