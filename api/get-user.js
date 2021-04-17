@@ -19,6 +19,25 @@ const createUser = async (db, { email }) => {
   return result;
 };
 
+const compileLeaguePicks = (leaguePicks, currentPick) => {
+  if (leaguePicks[currentPick.week]) {
+    leaguePicks[currentPick].push(currentPick);
+  } else {
+    leaguePicks[currentPick] = [currentPick];
+  }
+  return leaguePicks;
+};
+
+const sortLeaguePicks = (pickArray) => {
+  if (!Array.isArray(pickArray) || !pickArray.length) {
+    return [];
+  }
+  return [
+    pickArray[0],
+    pickArray[1].sort((a, b) => b.totalPoints - a.totalPoints),
+  ];
+};
+
 module.exports = async (req, res) => {
   const { email, week } = req.query;
   const db = await connectToDatabase(process.env.MONGO_URI);
@@ -60,7 +79,14 @@ module.exports = async (req, res) => {
         week: 0,
       })
       .toArray();
-    user.leaguePicks = leaguePicks || null;
+    const sortedLeaguePicks =
+      Object.fromEntries(
+        Object.entries(leaguePicks.reduce(compileLeaguePicks, {})).map(
+          sortLeaguePicks
+        )
+      ) || null;
+    console.log({ sortedLeaguePicks });
+    user.leaguePicks = sortedLeaguePicks;
   }
 
   if (!user || (Array.isArray(user) && !user.length)) {
