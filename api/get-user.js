@@ -25,18 +25,22 @@ const compileLeaguePicks = (leaguePicks, currentPick) => {
   } else {
     leaguePicks[currentPick] = [currentPick];
   }
+  console.log({
+    leaguePicks,
+    currentPick,
+  });
   return leaguePicks;
 };
 
-const sortLeaguePicks = (pickArray) => {
-  if (!Array.isArray(pickArray) || !pickArray.length) {
-    return [];
-  }
-  return [
-    pickArray[0],
-    pickArray[1].sort((a, b) => b.totalPoints - a.totalPoints),
-  ];
-};
+// const sortLeaguePicks = (pickArray) => {
+//   if (!Array.isArray(pickArray) || !pickArray.length) {
+//     return [];
+//   }
+//   return [
+//     pickArray[0],
+//     pickArray[1].sort((a, b) => b.totalPoints - a.totalPoints),
+//   ];
+// };
 
 module.exports = async (req, res) => {
   const { email, week } = req.query;
