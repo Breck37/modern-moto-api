@@ -79,12 +79,12 @@ module.exports = async (req, res) => {
         week: 0,
       })
       .toArray();
-    const sortedLeaguePicks =
-      Object.fromEntries(
-        Object.entries(leaguePicks.reduce(compileLeaguePicks, {})).map(
-          sortLeaguePicks
-        )
-      ) || null;
+    const sortedLeaguePicks = leaguePicks.reduce(compileLeaguePicks, {});
+    // Object.fromEntries(
+    //   Object.entries(leaguePicks.reduce(compileLeaguePicks, {})).map(
+    //     sortLeaguePicks
+    //   )
+    // ) || null;
     console.log({ sortedLeaguePicks });
     user.leaguePicks = sortedLeaguePicks;
   }
