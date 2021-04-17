@@ -21,9 +21,9 @@ const createUser = async (db, { email }) => {
 
 const compileLeaguePicks = (leaguePicks, currentPick) => {
   if (leaguePicks[currentPick.week]) {
-    leaguePicks[currentPick].push(currentPick);
+    leaguePicks[currentPick.week].push(currentPick);
   } else {
-    leaguePicks[currentPick] = [currentPick];
+    leaguePicks[currentPick.week] = [currentPick];
   }
   console.log({
     leaguePicks,
