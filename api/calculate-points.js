@@ -25,7 +25,7 @@ const calculateTotal = (userPicks) => {
 const checkSame = (userPick, topFive) => {
   return topFive.find(
     (result) =>
-      result.name.trim() === userPick.riderName.trim() &&
+      result.riderName.trim() === userPick.riderName.trim() &&
       result.position === userPick.position
   );
 };
@@ -33,7 +33,7 @@ const checkSame = (userPick, topFive) => {
 const checkDifferent = (userPick, topFive) => {
   return topFive.find(
     (result) =>
-      result.name.trim() === userPick.riderName.trim() &&
+      result.riderName.trim() === userPick.riderName.trim() &&
       result.position !== userPick.position
   );
 };
@@ -41,7 +41,7 @@ const checkDifferent = (userPick, topFive) => {
 const checkKickers = (userPick, kickers) => {
   return kickers.find(
     (result) =>
-      result.name.trim() === userPick.riderName.trim() &&
+      result.riderName.trim() === userPick.riderName.trim() &&
       result.position === userPick.position
   );
 };
@@ -68,7 +68,6 @@ const calculatePointsForUserPicks = (applicableResults) => {
       } else if (checkKickers(pick, kickers)) {
         return { ...pick, points: pointValues.kicker };
       }
-
       return pick;
     });
 
@@ -76,7 +75,7 @@ const calculatePointsForUserPicks = (applicableResults) => {
       ...picksToCalculate,
       bigBikePicks: updatedPicks,
       totalPoints: calculateTotal(updatedPicks),
-      hasBeenEquated: true,
+      hasBeenEquated: false,
     };
   };
 };
@@ -164,7 +163,7 @@ module.exports = async (req, res) => {
       }
     : null;
   const applicableResults = filterAndGetApplicableResults(
-    raceResults.raceResults,
+    raceResults.liveResults.raceResults,
     fastestLap
   );
 
