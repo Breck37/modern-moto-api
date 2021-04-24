@@ -29,8 +29,9 @@ module.exports = async (req, res) => {
   };
   console.log({ formattedUserPicks });
   // await db.collection("picks").insertOne(formattedUserPicks);
-  await db.collection("picks");
-  // .updateOne({ email, week }, formattedUserPicks, { upsert: true });
+  await db
+    .collection("picks")
+    .updateOne({ email, week }, formattedUserPicks, { upsert: true });
 
   res.status(200).json({ success: true, bigBikePicks, email, week });
 };
