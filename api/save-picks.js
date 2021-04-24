@@ -31,7 +31,7 @@ module.exports = async (req, res) => {
   // await db.collection("picks").insertOne(formattedUserPicks);
   await db
     .collection("picks")
-    .updateOne({ email, week }, formattedUserPicks, { upsert: true });
+    .replaceOne({ email, week }, formattedUserPicks, { upsert: true });
 
   res.status(200).json({ success: true, bigBikePicks, email, week });
 };
