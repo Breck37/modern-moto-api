@@ -3,6 +3,7 @@ import connectToDatabase from "./utils/connectToDatabase";
 module.exports = async (req, res) => {
   const {
     email,
+    user,
     bigBikePicks,
     smallBikePicks = [],
     week,
@@ -10,9 +11,12 @@ module.exports = async (req, res) => {
   } = req.body;
 
   const db = await connectToDatabase(process.env.MONGO_URI);
-
+  console.log({
+    body: req.body,
+  });
   const formattedUserPicks = {
-    user: email,
+    user,
+    email,
     week,
     year: new Date().getFullYear(),
     bigBikePicks,
@@ -24,7 +28,9 @@ module.exports = async (req, res) => {
     created_at: new Date(),
   };
   console.log({ formattedUserPicks });
-  await db.collection("picks").insertOne(formattedUserPicks);
+  // await db.collection("picks").insertOne(formattedUserPicks);
+  await db.collection("picks");
+  // .updateOne({ email, week }, formattedUserPicks, { upsert: true });
 
   res.status(200).json({ success: true, bigBikePicks, email, week });
 };
