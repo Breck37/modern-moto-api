@@ -3,16 +3,22 @@ import connectToDatabase from "./utils/connectToDatabase";
 module.exports = async (req, res) => {
   const {
     email,
+    user,
     bigBikePicks,
     smallBikePicks = [],
     week,
     league = "",
   } = req.body;
 
+  if (!Array.isArray(bigBikePicks) || !bigBikePicks.length) {
+    res.status(200).json({ success: false, message: "No picks to save!" });
+  }
+
   const db = await connectToDatabase(process.env.MONGO_URI);
 
   const formattedUserPicks = {
-    user: email,
+    user,
+    email,
     week,
     year: new Date().getFullYear(),
     bigBikePicks,
@@ -23,8 +29,10 @@ module.exports = async (req, res) => {
     rank: null,
     created_at: new Date(),
   };
-  console.log({ formattedUserPicks });
-  await db.collection("picks").insertOne(formattedUserPicks);
+
+  await db
+    .collection("picks")
+    .replaceOne({ email, week }, formattedUserPicks, { upsert: true });
 
   res.status(200).json({ success: true, bigBikePicks, email, week });
 };
