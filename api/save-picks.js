@@ -10,10 +10,12 @@ module.exports = async (req, res) => {
     league = "",
   } = req.body;
 
+  if (!Array.isArray(bigBikePicks) || !bigBikePicks.length) {
+    res.status(200).json({ success: false, message: "No picks to save!" });
+  }
+
   const db = await connectToDatabase(process.env.MONGO_URI);
-  console.log({
-    body: req.body,
-  });
+
   const formattedUserPicks = {
     user,
     email,
@@ -27,8 +29,7 @@ module.exports = async (req, res) => {
     rank: null,
     created_at: new Date(),
   };
-  console.log({ formattedUserPicks });
-  // await db.collection("picks").insertOne(formattedUserPicks);
+
   await db
     .collection("picks")
     .replaceOne({ email, week }, formattedUserPicks, { upsert: true });
