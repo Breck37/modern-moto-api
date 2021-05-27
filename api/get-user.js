@@ -1,23 +1,25 @@
 import connectToDatabase from "./utils/connectToDatabase";
 
-const createUser = async (db, { email }) => {
-  if (!email) {
-    return { success: false, email };
-  }
+// const createUser = async ({ email }) => {
+//   if (!email) {
+//     return { success: false, email };
+//   }
 
-  const baseUser = {
-    archived: false,
-    email,
-    username: email?.split("@")[0],
-    currentMode: 1,
-    leagues: [],
-    weeklyResults: [],
-  };
+//   const db = await connectToDatabase(process.env.MONGO_URI);
 
-  const result = await db.collection("users").insertOne(baseUser);
+//   const baseUser = {
+//     archived: false,
+//     email,
+//     username: email?.split("@")[0],
+//     currentMode: 1,
+//     leagues: [],
+//     weeklyResults: [],
+//   };
 
-  return result;
-};
+//   const result = await db.collection("users").insertOne(baseUser);
+
+//   return result;
+// };
 
 const compileLeaguePicks = (leaguePicks, currentPick) => {
   if (leaguePicks[currentPick.week]) {
@@ -57,14 +59,15 @@ module.exports = async (req, res) => {
         rank: 1,
         totalPoints: 1,
         user: 1,
-        league: 0,
+        league: 1,
         smallBikePicks: 0,
         week: 0,
+        _id: 0
       }
     )
     .toArray();
-  console.log({ picks });
-  if (Array.isArray(picks) && picks.length && picks[0].league) {
+
+    if (Array.isArray(picks) && picks.length && picks[0].league) {
     const query = { league: picks[0].league };
 
     if (week) {
@@ -83,27 +86,25 @@ module.exports = async (req, res) => {
         week: 0,
       })
       .toArray();
-    console.log({ leaguePicks, week, query });
-    const sortedLeaguePicks =
+
+      const sortedLeaguePicks =
       Object.fromEntries(
         Object.entries(leaguePicks.reduce(compileLeaguePicks, {})).map(
           sortLeaguePicks
         )
       ) || null;
-    console.log({ sortedLeaguePicks });
-    user.leaguePicks = sortedLeaguePicks;
+
+      user.picks = picks
+      user.leaguePicks = sortedLeaguePicks;
   }
 
   if (!user || (Array.isArray(user) && !user.length)) {
-    user = await createUser(db, { email });
-    if (user.success === false) {
       return res.status(200).json({
         success: false,
         message: "error saving user",
         user: user.email,
-      });
-    }
+    });
   }
 
-  return res.status(200).json({ success: true, user: { ...user, picks } });
+  return res.status(200).json({ success: true, user });
 };
