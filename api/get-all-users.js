@@ -2,8 +2,8 @@ import connectToDatabase from "./utils/connectToDatabase";
 
 module.exports = async (req, res) => {
     const db = await connectToDatabase(process.env.MONGO_URI);
-
+    console.log(db)
     const users = await db.collection('users').find().toArray();
 
-    return users;
+    res.status(200).send(users)
 } 

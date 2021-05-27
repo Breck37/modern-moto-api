@@ -5,5 +5,5 @@ module.exports = async (req, res) => {
 
     const results = await db.collection('results').find().toArray();
 
-    return results;
+    res.status(200).send(results)
 } 
