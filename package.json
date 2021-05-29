@@ -1,6 +1,6 @@
 {
   "name": "modern-moto-api",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "api for modernmotofantasy.com",
   "main": "index.js",
   "repository": "https://github.com/Breck37/modern-moto-api",

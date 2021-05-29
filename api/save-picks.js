@@ -9,7 +9,8 @@ module.exports = async (req, res) => {
     week,
     league = "League of Extraordinary Bros",
     type,
-    season
+    season,
+    round
   } = req.body;
 
   if (!Array.isArray(bigBikePicks) || !bigBikePicks.length) {
@@ -22,6 +23,7 @@ module.exports = async (req, res) => {
     user,
     email,
     week,
+    round,
     year: new Date().getFullYear(),
     bigBikePicks,
     smallBikePicks,
