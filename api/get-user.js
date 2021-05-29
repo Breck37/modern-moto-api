@@ -22,38 +22,76 @@ import connectToDatabase from "./utils/connectToDatabase";
 // };
 
 const compileLeaguePicks = (leaguePicks, currentPick) => {
-  if (leaguePicks[currentPick.week]) {
-    leaguePicks[currentPick.week].push(currentPick);
+  if (leaguePicks[currentPick.season] && leaguePicks[currentPick.season][currentPick.type] && leaguePicks[currentPick.season][currentPick.type][`week${currentPick.week}`]) {
+    leaguePicks[currentPick.season][currentPick.type][`week${currentPick.week}`].push(currentPick);
+    leaguePicks[currentPick.season][currentPick.type][`week${currentPick.week}`].sort((a, b) => b.totalPoints - a.totalPoints)
+  } else if (leaguePicks[currentPick.season] && leaguePicks[currentPick.season][currentPick.type]) {
+    leaguePicks[currentPick.season][currentPick.type][`week${currentPick.week}`] = [currentPick]
+  } else if (leaguePicks[currentPick.season]) {
+    leaguePicks[currentPick.season][currentPick.type] = {
+      [`week${currentPick.week}`]: [currentPick]
+    }
   } else {
-    leaguePicks[currentPick.week] = [currentPick];
+    leaguePicks = {
+      ...leaguePicks,
+      [currentPick.season]: {
+        [currentPick.type]: {
+          [`week${currentPick.week}`]: [currentPick]
+        }
+      }
+    }
   }
-  console.log({
-    leaguePicks,
-    currentPick,
-  });
   return leaguePicks;
 };
 
-const sortLeaguePicks = (pickArray) => {
-  if (!Array.isArray(pickArray) || !pickArray.length) {
-    return [];
-  }
-  return [
-    pickArray[0],
-    pickArray[1].sort((a, b) => b.totalPoints - a.totalPoints),
-  ];
-};
+// const sortLeaguePicks = (pickArray) => {
+//   console.log({ pickArray })
+//   if (!Array.isArray(pickArray) || !pickArray.length) {
+//     return [];
+//   }
+
+//   const sortedPicks = Object.entries(pickArray[1]).map(entry => {
+//     return {
+//       [entry[0]]: Object.f
+//     }
+//   }).sort((a, b) => b.totalPoints - a.totalPoints)
+
+//   return {
+//     [Object.keys(pickArray)[0]]: {
+
+//     },
+//   };
+// };
 
 module.exports = async (req, res) => {
-  const { email, week } = req.query;
+  const {
+    email,
+    week,
+    // type 
+  } = req.query;
   const db = await connectToDatabase(process.env.MONGO_URI);
 
   let user = await db.collection("users").findOne({ email });
 
+  // if (!user || (Array.isArray(user) && !user.length)) {
+  //   return res.status(200).json({
+  //     success: false,
+  //     message: "error saving user",
+  //     user,
+  //     emailUsed: email
+  //   });
+  // }
+  if (!user) {
+    return;
+  }
+
+  const pickQuery = { user: user.username };
+
+
   const picks = await db
     .collection("picks")
     .find(
-      { user: user.username },
+      pickQuery,
       {
         bigBikePicks: 1,
         rank: 1,
@@ -67,7 +105,7 @@ module.exports = async (req, res) => {
     )
     .toArray();
 
-    if (Array.isArray(picks) && picks.length && picks[0].league) {
+  if (Array.isArray(picks) && picks.length && picks[0].league) {
     const query = { league: picks[0].league };
 
     if (week) {
@@ -87,23 +125,10 @@ module.exports = async (req, res) => {
       })
       .toArray();
 
-      const sortedLeaguePicks =
-      Object.fromEntries(
-        Object.entries(leaguePicks.reduce(compileLeaguePicks, {})).map(
-          sortLeaguePicks
-        )
-      ) || null;
+    const sortedLeaguePicks = leaguePicks.reduce(compileLeaguePicks, {}) || null;
 
-      user.picks = picks
-      user.leaguePicks = sortedLeaguePicks;
-  }
-
-  if (!user || (Array.isArray(user) && !user.length)) {
-      return res.status(200).json({
-        success: false,
-        message: "error saving user",
-        user: user.email,
-    });
+    user.picks = picks
+    user.leaguePicks = sortedLeaguePicks;
   }
 
   return res.status(200).json({ success: true, user });
