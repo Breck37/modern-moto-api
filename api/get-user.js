@@ -57,7 +57,7 @@ module.exports = async (req, res) => {
   // if (!user) {
   return res.status(200).json({
     success: false,
-    message: "No user in DB",
+    message: "db",
     user,
     emailUsed: email
   });
@@ -112,7 +112,7 @@ module.exports = async (req, res) => {
   //   if (!user || (Array.isArray(user) && !user.length)) {
   //     return res.status(200).json({
   //       success: false,
-  //       message: "error saving user",
+  //       message: "save",
   //       user,
   //       emailUsed: email
   //     });
