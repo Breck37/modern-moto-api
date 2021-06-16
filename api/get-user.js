@@ -45,73 +45,80 @@ const compileLeaguePicks = (leaguePicks, currentPick) => {
 };
 
 module.exports = async (req, res) => {
-  const {
-    email,
-    week,
-    // type 
-  } = req.query;
-  const db = await connectToDatabase(process.env.MONGO_URI);
+  try {
+    const {
+      email,
+      week,
+      // type 
+    } = req.query;
+    const db = await connectToDatabase(process.env.MONGO_URI);
 
-  let user = await db.collection("users").findOne({ email });
+    let user = await db.collection("users").findOne({ email });
 
-  if (!user) {
-    return;
-  }
-
-  const pickQuery = { user: user.username };
-
-
-  const picks = await db
-    .collection("picks")
-    .find(
-      pickQuery,
-      {
-        bigBikePicks: 1,
-        rank: 1,
-        totalPoints: 1,
-        user: 1,
-        league: 1,
-        smallBikePicks: 0,
-        week: 0,
-        _id: 0
-      }
-    )
-    .toArray();
-
-  if (Array.isArray(picks) && picks.length && picks[0].league) {
-    const query = { league: picks[0].league };
-
-    if (week) {
-      query.week = parseInt(week);
+    if (!user) {
+      return res.status(200).json({
+        success: false,
+        message: "db",
+        user,
+        emailUsed: email
+      });
     }
 
-    const leaguePicks = await db
+    const pickQuery = { user: user.username };
+
+
+    const picks = await db
       .collection("picks")
-      .find(query, {
-        bigBikePicks: 1,
-        rank: 1,
-        totalPoints: 1,
-        user: 1,
-        league: 0,
-        smallBikePicks: 0,
-        week: 0,
-      })
+      .find(
+        pickQuery,
+        {
+          bigBikePicks: 1,
+          rank: 1,
+          totalPoints: 1,
+          user: 1,
+          league: 1,
+          smallBikePicks: 0,
+          week: 0,
+          _id: 0
+        }
+      )
       .toArray();
 
-    const sortedLeaguePicks = leaguePicks.reduce(compileLeaguePicks, {}) || null;
+    if (Array.isArray(picks) && picks.length && picks[0].league) {
+      const query = { league: picks[0].league };
 
-    user.picks = picks
-    user.leaguePicks = sortedLeaguePicks;
-  }
+      if (week) {
+        query.week = parseInt(week);
+      }
 
-  if (!user || (Array.isArray(user) && !user.length)) {
+      const leaguePicks = await db
+        .collection("picks")
+        .find(query, {
+          bigBikePicks: 1,
+          rank: 1,
+          totalPoints: 1,
+          user: 1,
+          league: 0,
+          smallBikePicks: 0,
+          week: 0,
+        })
+        .toArray();
+
+      const sortedLeaguePicks = leaguePicks.reduce(compileLeaguePicks, {}) || null;
+
+      user.picks = picks
+      user.leaguePicks = sortedLeaguePicks;
+    }
+
+    return res.status(200).json({ success: true, user });
+  } catch (error) {
+    const {
+      email,
+    } = req.query;
     return res.status(200).json({
       success: false,
-      message: "error saving user",
-      user,
+      message: "failure",
       emailUsed: email
-    });
+    })
   }
-
-  return res.status(200).json({ success: true, user });
 };
