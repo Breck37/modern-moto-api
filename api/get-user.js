@@ -22,19 +22,19 @@ import connectToDatabase from "./utils/connectToDatabase";
 // };
 
 const compileLeaguePicks = (leaguePicks, currentPick) => {
-  if (leaguePicks[currentPick.season] && leaguePicks[currentPick.season][currentPick.type] && leaguePicks[currentPick.season][currentPick.type][`week${currentPick.week}`]) {
-    leaguePicks[currentPick.season][currentPick.type][`week${currentPick.week}`].push(currentPick);
-    leaguePicks[currentPick.season][currentPick.type][`week${currentPick.week}`].sort((a, b) => b.totalPoints - a.totalPoints)
-  } else if (leaguePicks[currentPick.season] && leaguePicks[currentPick.season][currentPick.type]) {
-    leaguePicks[currentPick.season][currentPick.type][`week${currentPick.week}`] = [currentPick]
-  } else if (leaguePicks[currentPick.season]) {
-    leaguePicks[currentPick.season][currentPick.type] = {
+  if (leaguePicks[currentPick.year] && leaguePicks[currentPick.year][currentPick.type] && leaguePicks[currentPick.year][currentPick.type][`week${currentPick.week}`]) {
+    leaguePicks[currentPick.year][currentPick.type][`week${currentPick.week}`].push(currentPick);
+    leaguePicks[currentPick.year][currentPick.type][`week${currentPick.week}`].sort((a, b) => b.totalPoints - a.totalPoints)
+  } else if (leaguePicks[currentPick.year] && leaguePicks[currentPick.year][currentPick.type]) {
+    leaguePicks[currentPick.year][currentPick.type][`week${currentPick.week}`] = [currentPick]
+  } else if (leaguePicks[currentPick.year]) {
+    leaguePicks[currentPick.year][currentPick.type] = {
       [`week${currentPick.week}`]: [currentPick]
     }
   } else {
     leaguePicks = {
       ...leaguePicks,
-      [currentPick.season]: {
+      [currentPick.year]: {
         [currentPick.type]: {
           [`week${currentPick.week}`]: [currentPick]
         }
