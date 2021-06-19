@@ -126,7 +126,7 @@ const assignRankings = (currentPicks) => {
 };
 
 module.exports = async (req, res) => {
-  const { week, type } = req.query;
+  const { week, type, season } = req.query;
   const { raceResults } = req.body;
 
   const db = await connectToDatabase(process.env.MONGO_URI);
@@ -137,10 +137,22 @@ module.exports = async (req, res) => {
     .project({ user: 1, bigBikePicks: 1, league: 1, totalPoints: 1 })
     .toArray();
 
+  const fastestLap = raceResults.fastestLaps
+    ? {
+      ...raceResults.fastestLaps[0],
+      riderName: raceResults.fastestLaps[0].riderName,
+      position: 100,
+    } : {
+      bestLap: '2:11.581',
+      riderName: 'Dylan Ferrandis',
+      number: 14,
+      position: 100,
+    };
+
   // save race results to DB
   await db
     .collection("results")
-    .updateOne({ week, type }, { $set: { raceResults, week } }, { upsert: true });
+    .updateOne({ week, type }, { $set: { raceResults, week, fastestLap, season } }, { upsert: true });
 
   if (
     !currentWeekPicks ||
@@ -153,18 +165,6 @@ module.exports = async (req, res) => {
     });
     return;
   }
-
-  const fastestLap = raceResults.fastestLaps
-    ? {
-      ...raceResults.fastestLaps[0],
-      riderName: raceResults.fastestLaps[0].riderName,
-      position: 100,
-    } : {
-      bestLap: '2:19.607',
-      riderName: 'Ken Roczen',
-      number: 94,
-      position: 100,
-    };
 
   const applicableResults = filterAndGetApplicableResults(
     raceResults.raceResults,
