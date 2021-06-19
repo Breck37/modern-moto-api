@@ -23,25 +23,25 @@ const calculateTotal = (userPicks) => {
 };
 
 const checkSame = (userPick, topFive) => {
-  if (!userPick) return false;
-  return topFive.filter(Boolean).find(
-    (result) => result.riderName.trim() === userPick.riderName.trim() &&
+  return topFive.find(
+    (result) =>
+      result.riderName.trim() === userPick.riderName.trim() &&
       result.position === userPick.position
   );
 };
 
 const checkDifferent = (userPick, topFive) => {
-  if (!userPick) return false;
-  return topFive.filter(Boolean).find(
-    (result) => result.riderName.trim() === userPick.riderName.trim() &&
+  return topFive.find(
+    (result) =>
+      result.riderName.trim() === userPick.riderName.trim() &&
       result.position !== userPick.position
   );
 };
 
 const checkKickers = (userPick, kickers) => {
-  if (!userPick) return false;
-  return kickers.filter(Boolean).find(
-    (result) => result.riderName.trim() === userPick.riderName.trim() &&
+  return kickers.find(
+    (result) =>
+      result.riderName.trim() === userPick.riderName.trim() &&
       result.position === userPick.position
   );
 };
@@ -126,7 +126,7 @@ const assignRankings = (currentPicks) => {
 };
 
 module.exports = async (req, res) => {
-  const { week, type, season } = req.query;
+  const { week, type } = req.query;
   const { raceResults } = req.body;
 
   const db = await connectToDatabase(process.env.MONGO_URI);
@@ -137,37 +137,33 @@ module.exports = async (req, res) => {
     .project({ user: 1, bigBikePicks: 1, league: 1, totalPoints: 1 })
     .toArray();
 
-  const fastestLap = raceResults.fastestLaps
-    ? {
-      ...raceResults.fastestLaps[0],
-      riderName: raceResults.fastestLaps[0].riderName,
-      position: 100,
-    } : {
-      bestLap: '2:11.581',
-      riderName: 'Dylan Ferrandis',
-      number: 14,
-      position: 100,
-    };
-
   // save race results to DB
-  await db
-    .collection("results")
-    .updateOne({ week, type }, { $set: { raceResults, week, fastestLap, season } }, { upsert: true });
+  // await db
+  //   .collection("results")
+  //   .updateOne({ week, type }, { $set: { raceResults, week } }, { upsert: true });
 
-  if (
-    !currentWeekPicks ||
-    (Array.isArray(currentWeekPicks) && !currentWeekPicks.length)
-  ) {
-    res.status(200).json({
-      success: true,
-      currentWeekPicks,
-      message: "No Picks To Calculate",
-    });
-    return;
-  }
+  // if (
+  //   !currentWeekPicks ||
+  //   (Array.isArray(currentWeekPicks) && !currentWeekPicks.length)
+  // ) {
+  //   res.status(200).json({
+  //     success: true,
+  //     currentWeekPicks,
+  //     message: "No Picks To Calculate",
+  //   });
+  //   return;
+  // }
 
+  const fastestLap = raceResults.liveResults.fastestLaps
+    ? {
+      ...raceResults.liveResults.fastestLaps[0],
+      name: raceResults.liveResults.fastestLaps[0].riderName,
+      number: raceResults.liveResults.fastestLaps[0].number,
+      position: 100,
+    }
+    : null;
   const applicableResults = filterAndGetApplicableResults(
-    raceResults.raceResults,
+    raceResults.liveResults.raceResults,
     fastestLap
   );
 
@@ -178,23 +174,23 @@ module.exports = async (req, res) => {
   );
 
   // Save Calculated Picks
-  await Promise.all(
-    await calculatedPicks.map(async (pick) => {
-      const { bigBikePicks, totalPoints, hasBeenEquated, rank } = pick;
-      const updatedPick = await db.collection("picks").updateOne(
-        { _id: pick._id },
-        {
-          $set: {
-            bigBikePicks,
-            totalPoints,
-            hasBeenEquated,
-            rank,
-          },
-        }
-      );
-      return updatedPick;
-    })
-  );
+  // await Promise.all(
+  //   await calculatedPicks.map(async (pick) => {
+  //     const { bigBikePicks, totalPoints, hasBeenEquated, rank } = pick;
+  //     const updatedPick = await db.collection("picks").updateOne(
+  //       { _id: pick._id },
+  //       {
+  //         $set: {
+  //           bigBikePicks,
+  //           totalPoints,
+  //           hasBeenEquated,
+  //           rank,
+  //         },
+  //       }
+  //     );
+  //     return updatedPick;
+  //   })
+  // );
 
   res.status(200).json({
     success: true,
