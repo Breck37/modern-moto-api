@@ -137,8 +137,6 @@ module.exports = async (req, res) => {
     .project({ user: 1, bigBikePicks: 1, league: 1, totalPoints: 1 })
     .toArray();
 
-  console.log({ week, type, season, currentWeekPicks })
-
   const fastestLap = raceResults.fastestLaps
     ? {
       ...raceResults.fastestLaps[0],
@@ -182,14 +180,14 @@ module.exports = async (req, res) => {
   // Save Calculated Picks
   await Promise.all(
     await calculatedPicks.map(async (pick) => {
-      const { bigBikePicks, totalPoints, hasBeenEquated, rank } = pick;
+      const { bigBikePicks, totalPoints, rank } = pick;
       const updatedPick = await db.collection("picks").updateOne(
         { _id: pick._id },
         {
           $set: {
             bigBikePicks,
             totalPoints,
-            hasBeenEquated,
+            hasBeenEquated: true,
             rank,
           },
         }
