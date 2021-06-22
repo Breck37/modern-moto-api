@@ -137,6 +137,8 @@ module.exports = async (req, res) => {
     .project({ user: 1, bigBikePicks: 1, league: 1, totalPoints: 1 })
     .toArray();
 
+  console.log({ week, type, season, currentWeekPicks })
+
   const fastestLap = raceResults.fastestLaps
     ? {
       ...raceResults.fastestLaps[0],
