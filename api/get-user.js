@@ -51,6 +51,15 @@ module.exports = async (req, res) => {
       week,
       // type 
     } = req.query;
+
+    if (!email) {
+      return res.status(200).json({
+        success: false,
+        message: "email",
+        emailUsed: email
+      });
+    }
+
     const db = await connectToDatabase(process.env.MONGO_URI);
 
     let user = await db.collection("users").findOne({ email });
@@ -110,11 +119,13 @@ module.exports = async (req, res) => {
       user.leaguePicks = sortedLeaguePicks;
     }
 
+
     return res.status(200).json({ success: true, user });
   } catch (error) {
     const {
       email,
     } = req.query;
+
     return res.status(200).json({
       success: false,
       message: "failure",
