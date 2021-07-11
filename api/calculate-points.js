@@ -1,11 +1,11 @@
-import connectToDatabase from "./utils/connectToDatabase";
+import connectToDatabase from "../utils/connectToDatabase";
 
-const filterAndGetApplicableResults = (results, fastestLap) => {
+const filterAndGetApplicableResults = (results, fastestLap = []) => {
   const applicableResults = results.filter((result) => {
     if (!result) return false;
     return [1, 2, 3, 4, 5, 10].includes(result.position || results.overall);
   });
-  applicableResults.push(fastestLap);
+  applicableResults.push(...fastestLap);
   return applicableResults;
 };
 
@@ -136,18 +136,13 @@ module.exports = async (req, res) => {
     .find({ week: parseInt(week), hasBeenEquated: false, type })
     .project({ user: 1, bigBikePicks: 1, league: 1, totalPoints: 1 })
     .toArray();
+  let fastestLap = null;
 
-  const fastestLap = raceResults.fastestLaps
-    ? {
-      ...raceResults.fastestLaps[0],
-      riderName: raceResults.fastestLaps[0].riderName,
-      position: 100,
-    } : {
-      bestLap: '2:11.581',
-      riderName: 'Dylan Ferrandis',
-      number: 14,
-      position: 100,
-    };
+  const fastestLap = raceResults.fastestLaps ? {
+        ...raceResults.fastestLaps[0],
+        riderName: raceResults.fastestLaps[0].riderName,
+        position: 100,
+      } : null;
 
   // save race results to DB
   await db
