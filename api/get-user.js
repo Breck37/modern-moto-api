@@ -76,7 +76,7 @@ module.exports = async (req, res) => {
     const pickQuery = { user: user.username };
 
     if (type) {
-      pickQuery.type = { type };
+      pickQuery.type = type;
     }
 
     const picks = await db
