@@ -49,7 +49,7 @@ module.exports = async (req, res) => {
     const {
       email,
       week,
-      // type 
+      type 
     } = req.query;
 
     if (!email) {
@@ -61,6 +61,7 @@ module.exports = async (req, res) => {
     }
 
     const db = await connectToDatabase(process.env.MONGO_URI);
+    console.log('HIT GET USER', { email, week, type, db })
 
     let user = await db.collection("users").findOne({ email });
 
@@ -125,6 +126,8 @@ module.exports = async (req, res) => {
     const {
       email,
     } = req.query;
+
+    console.log({ error })
 
     return res.status(200).json({
       success: false,
