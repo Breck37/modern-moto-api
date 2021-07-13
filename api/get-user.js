@@ -49,7 +49,7 @@ module.exports = async (req, res) => {
     const {
       email,
       week,
-      // type 
+      type 
     } = req.query;
 
     if (!email) {
@@ -75,6 +75,9 @@ module.exports = async (req, res) => {
 
     const pickQuery = { user: user.username };
 
+    if (type) {
+      pickQuery.type = type;
+    }
 
     const picks = await db
       .collection("picks")
@@ -113,10 +116,8 @@ module.exports = async (req, res) => {
         })
         .toArray();
 
-      const sortedLeaguePicks = leaguePicks.reduce(compileLeaguePicks, {}) || null;
-
+      user.leaguePicks = leaguePicks.reduce(compileLeaguePicks, {}) || null;;
       user.picks = picks
-      user.leaguePicks = sortedLeaguePicks;
     }
 
 
