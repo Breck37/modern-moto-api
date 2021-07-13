@@ -75,7 +75,7 @@ module.exports = async (req, res) => {
 
     const pickQuery = { user: user.username };
 
-    if(type) {
+    if (type) {
       pickQuery.type = { type };
     }
 
