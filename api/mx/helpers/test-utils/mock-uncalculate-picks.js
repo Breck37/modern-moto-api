@@ -2,16 +2,16 @@ module.exports = [
   {
     user: 'Brent',
     week: 100,
-    bigBikePicks: [
+    bigBikePicks: [ // 15
       {
         riderName: 'Eli Tomac',
         position: 1,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Ken Roczen',
         position: 2,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Adam Cianciarulo',
@@ -21,7 +21,7 @@ module.exports = [
       {
         riderName: 'Dylan Ferrandis',
         position: 4,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Chase Sexton',
@@ -44,31 +44,31 @@ module.exports = [
         points: 0,
       },
     ],
-    smallBikePicks: [
+    smallBikePicks: [ // 25
       {
         riderName: 'Justin Cooper',
         position: 1,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Jett Lawrence',
         position: 2,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Jeremy Martin',
         position: 3,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Hunter Lawrence',
         position: 4,
-        points: 0,
+        points: 0, // 10
       },
       {
         riderName: 'Austin Forkner',
         position: 5,
-        points: 0,
+        points: 0, 
       },
       {
         riderName: 'Maximus Vohland',
@@ -98,21 +98,21 @@ module.exports = [
   {
     user: 'RJ',
     week: 100,
-    bigBikePicks: [
+    bigBikePicks: [ // 50
       {
         riderName: 'Dylan Ferrandis',
         position: 1,
-        points: 0,
+        points: 0, // 10
       },
       {
         riderName: 'Ken Roczen',
         position: 2,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Aaron Plessinger',
         position: 3,
-        points: 0,
+        points: 0, // 10
       },
       {
         riderName: 'Adam Cianciarulo',
@@ -122,7 +122,7 @@ module.exports = [
       {
         riderName: 'Eli Tomac',
         position: 5,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Christian Craig',
@@ -137,34 +137,34 @@ module.exports = [
       {
         riderName: 'Ken Roczen',
         position: 102,
-        points: 0,
+        points: 0, // 20
       },
     ],
-    smallBikePicks: [
+    smallBikePicks: [ // 30
       {
         riderName: 'Jett Lawrence',
         position: 1,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Justin Cooper',
         position: 2,
-        points: 0,
+        points: 0, // 10
       },
       {
         riderName: 'RJ Hampshire',
         position: 3,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Jeremy Martin',
         position: 4,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Hunter Lawrence',
         position: 5,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Austin Forkner',
@@ -194,31 +194,31 @@ module.exports = [
   {
     user: 'Travis',
     week: 100,
-    bigBikePicks: [
+    bigBikePicks: [ // 40
       {
         riderName: 'Dylan Ferrandis',
         position: 1,
-        points: 0,
+        points: 0, // 10
       },
       {
         riderName: 'Adam Ciancurulo',
         position: 2,
-        points: 0,
+        points: 0, 
       },
       {
         riderName: 'Ken Roczen',
         position: 3,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Eli Tomac',
         position: 4,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Chase Sexton',
         position: 5,
-        points: 0,
+        points: 0, 
       },
       {
         riderName: 'Christian Craig',
@@ -228,7 +228,7 @@ module.exports = [
       {
         riderName: 'Dylan Ferrandis',
         position: 101,
-        points: 0,
+        points: 0, // 20
       },
       {
         riderName: 'Dylan Ferrandis',
@@ -236,16 +236,16 @@ module.exports = [
         points: 0,
       },
     ],
-    smallBikePicks: [
+    smallBikePicks: [ //25
       {
         riderName: 'Jett Lawrence',
         position: 1,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Justin Cooper',
         position: 2,
-        points: 0,
+        points: 0, // 10
       },
       {
         riderName: 'Jo Shimoda',
@@ -255,12 +255,12 @@ module.exports = [
       {
         riderName: 'RJ Hampshire',
         position: 4,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Hunter Lawrence',
         position: 5,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Nathanael Thrasher',
@@ -290,21 +290,21 @@ module.exports = [
   {
     user: 'Kyler',
     week: 100,
-    bigBikePicks: [
+    bigBikePicks: [ // 20
       {
         riderName: 'Dylan Ferrandis',
         position: 1,
-        points: 0,
+        points: 0, // 10
       },
       {
         riderName: 'Ken Roczen',
         position: 2,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Eli Tomac',
         position: 3,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Adam Cianciarulo',
@@ -332,26 +332,26 @@ module.exports = [
         points: 0,
       },
     ],
-    smallBikePicks: [
+    smallBikePicks: [ // 35
       {
         riderName: 'RJ Hampshire',
         position: 1,
-        points: 0,
+        points: 0, // 10
       },
       {
         riderName: 'Justin Cooper',
         position: 2,
-        points: 0,
+        points: 0, // 10
       },
       {
         riderName: 'Jett Lawrence',
         position: 3,
-        points: 0,
+        points: 0, // 10
       },
       {
         riderName: 'Jeremy Martin',
         position: 4,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Jalek Swoll',
@@ -386,21 +386,21 @@ module.exports = [
   {
     user: 'Kohl',
     week: 100,
-    bigBikePicks: [
+    bigBikePicks: [ // 20
       {
         riderName: 'Dylan Ferrandis',
         position: 1,
-        points: 0,
+        points: 0, // 10
       },
       {
         riderName: 'Ken Roczen',
         position: 2,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Eli Tomac',
         position: 3,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Adam Cianciarulo',
@@ -428,26 +428,26 @@ module.exports = [
         points: 0,
       },
     ],
-    smallBikePicks: [
+    smallBikePicks: [ // 35
       {
         riderName: 'RJ Hampshire',
         position: 1,
-        points: 0,
+        points: 0, // 10
       },
       {
         riderName: 'Justin Cooper',
         position: 2,
-        points: 0,
+        points: 0, // 10
       },
       {
         riderName: 'Jett Lawrence',
         position: 3,
-        points: 0,
+        points: 0, // 10
       },
       {
         riderName: 'Jeremy Martin',
         position: 4,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Jalek Swoll',
@@ -482,21 +482,21 @@ module.exports = [
   {
     user: 'Levi',
     week: 100,
-    bigBikePicks: [
+    bigBikePicks: [ // 20
       {
         riderName: 'Dylan Ferrandis',
         position: 1,
-        points: 0,
+        points: 0, // 10
       },
       {
         riderName: 'Ken Roczen',
         position: 2,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Eli Tomac',
         position: 3,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Adam Cianciarulo',
@@ -524,26 +524,26 @@ module.exports = [
         points: 0,
       },
     ],
-    smallBikePicks: [
+    smallBikePicks: [ // 35
       {
         riderName: 'RJ Hampshire',
         position: 1,
-        points: 0,
+        points: 0, // 10
       },
       {
         riderName: 'Justin Cooper',
         position: 2,
-        points: 0,
+        points: 0, // 10
       },
       {
         riderName: 'Jett Lawrence',
         position: 3,
-        points: 0,
+        points: 0, // 10
       },
       {
         riderName: 'Jeremy Martin',
         position: 4,
-        points: 0,
+        points: 0, // 5
       },
       {
         riderName: 'Jalek Swoll',

@@ -2,7 +2,6 @@ import connectToDatabase from "../utils/connectToDatabase";
 import { equateAndCalculate } from "./helpers";
 
 module.exports = async (req, res) => {
-  console.log("HIT MX CALCULATE");
   const { week, type } = req.query;
   const { raceResults, fastLapResults } = req.body;
 
@@ -14,12 +13,6 @@ module.exports = async (req, res) => {
     .project({ user: 1, bigBikePicks: 1, league: 1, totalPoints: 1 })
     .toArray();
 
-  console.log({ currentWeekPicks, body: req.body });
-
-  // save race results to DB
-  // await db
-  //   .collection("results")
-  //   .updateOne({ week, type }, { $set: { raceResults, week } }, { upsert: true });
 
   // if (
   //   !currentWeekPicks ||
@@ -38,16 +31,22 @@ module.exports = async (req, res) => {
     currentWeekPicks
   );
 
-  // if (!calculatedPicks || !applicableResults) {
-  //   res.status(200).json({
-  //     success: false,
-  //     currentWeekPicks,
-  //     calculatedPicks, 
-  //     applicableResults,
-  //     message: "Unable to calculate picks",
-  //   });
-  //   return;
-  // }
+  if (!calculatedPicks || !applicableResults) {
+    res.status(200).json({
+      success: false,
+      currentWeekPicks,
+      calculatedPicks, 
+      applicableResults,
+      message: "Unable to calculate picks",
+    });
+    return;
+  }
+
+    // save race results to DB
+    // await db
+    //   .collection("results")
+    //   .updateOne({ week, type }, { $set: { raceResults: applicableResults, week } }, { upsert: true });
+
   // Save Calculated Picks
   // await Promise.all(
   //   await calculatedPicks.map(async (pick) => {

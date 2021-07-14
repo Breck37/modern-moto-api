@@ -3,36 +3,88 @@ import {
   calculatePointsForUserPicks,
   filterAndGetApplicableResults,
 } from "./utilities";
+const util = require("util");
 
-module.exports = (raceResults, picksToCalculate) => {
-  console.log(
-    "HIT organizePicks",
-    assignRankings,
-    calculatePointsForUserPicks,
-    filterAndGetApplicableResults
+module.exports = (pdfResults, picksToCalculate) => {
+  let calculatedPicks = {};
+
+  if (
+    !pdfResults ||
+    !Array.isArray(picksToCalculate) ||
+    !picksToCalculate.length
+  ) {
+    return calculatedPicks;
+  }
+
+  const { raceResults, fastLapResults } = pdfResults;
+
+  const bigBikeFastestLaps = Object.entries(fastLapResults).reduce(
+    (acc, [key, value]) => {
+      if (key === "bigBikeLapTimesMoto1") {
+        acc.push({
+          ...value[0],
+          name: value[0].riderName,
+          position: 101,
+        });
+      }
+      if (key === "bigBikeLapTimesMoto2") {
+        acc.push({
+          ...value[0],
+          name: value[0].riderName,
+          position: 102,
+        });
+      }
+      return acc;
+    },
+    []
   );
-  return { };
-  //  const fastestLap = raceResults.liveResults.fastestLaps
-  //   ? {
-  //     ...raceResults.liveResults.fastestLaps[0],
-  //     name: raceResults.liveResults.fastestLaps[0].riderName,
-  //     number: raceResults.liveResults.fastestLaps[0].number,
-  //     position: 100,
-  //   }
-  //   : null;
-  // const applicableResults = filterAndGetApplicableResults(
-  //   raceResults.liveResults.raceResults,
-  //   fastestLap
-  // );
+  const smallBikeFastestLaps = Object.entries(fastLapResults).reduce(
+    (acc, [key, value]) => {
+      if (key === "smallBikeLapTimesMoto1") {
+        acc.push({
+          ...value[0],
+          name: value[0].riderName,
+          position: 101,
+        });
+      }
+      if (key === "smallBikeLapTimesMoto2") {
+        acc.push({
+          ...value[0],
+          name: value[0].riderName,
+          position: 102,
+        });
+      }
+      return acc;
+    },
+    []
+  );
 
-  // const equateWeeksPoints = calculatePointsForUserPicks(applicableResults);
+  const bigBikeapplicableResults = filterAndGetApplicableResults(
+    raceResults.big,
+    bigBikeFastestLaps
+  );
 
-  // const calculatedPicks = assignRankings(
-  //   currentWeekPicks.map(equateWeeksPoints)
-  // );
+  const smallBikeapplicableResults = filterAndGetApplicableResults(
+    raceResults.small,
+    smallBikeFastestLaps
+  );
 
-  //   return {
-  //     applicableResults,
-  //     calculatedPicks
-  //   }
+
+
+  const equateBigBikePoints = calculatePointsForUserPicks(bigBikeapplicableResults, 'bigBikePicks', 'bigBikePoints');
+  const equateSmallBikePoints = calculatePointsForUserPicks(smallBikeapplicableResults, 'smallBikePicks', 'smallBikePoints');
+
+  calculatedPicks = assignRankings(
+    picksToCalculate.map(equateBigBikePoints).map(equateSmallBikePoints)
+  );
+
+  const applicableResults = {
+    big: bigBikeapplicableResults,
+    small: smallBikeapplicableResults,
+  }
+
+    return {
+      applicableResults,
+      calculatedPicks
+    }
 };

@@ -39,27 +39,27 @@ export const checkDifferent = (userPick, topFive) => {
 };
 
 export const checkKickers = (userPick, kickers) => {
+  const initialized = userPick.riderName.split(' ').reduce((a, c, i) => i === 0 ? a += `${c[0]}. ` : a += c, '');
   return kickers.find(
     (result) =>
-      result.riderName.trim() === userPick.riderName.trim() &&
+      (result.riderName.trim() === userPick.riderName.trim() || initialized === result.riderName.trim()) &&
       result.position === userPick.position
   );
 };
 
-export const calculatePointsForUserPicks = (applicableResults, pickType) => {
+export const calculatePointsForUserPicks = (applicableResults, pickType, pointType) => {
   return (userPicks) => {
     const picksToCalculate = { ...userPicks };
 
     const updatedPicks = userPicks[pickType].map((pick) => {
-      const isKickerPick = pick.position === 10 || pick.position === 100;
-
+      const isKickerPick = pick.position === 10 || pick.position === 101 || pick.position === 102;
       const topFive = applicableResults
         .filter(Boolean)
         .filter((result) => result.position !== 10 && result.position !== 100);
-
       const kickers = applicableResults
         .filter(Boolean)
-        .filter((result) => result.position === 10 || result.position === 100);
+        .filter((result) => result.position === 10 || result.position === 101 || result.position === 102);
+
 
       if (!isKickerPick && checkSame(pick, topFive)) {
         return { ...pick, points: pointValues.same };
@@ -68,14 +68,18 @@ export const calculatePointsForUserPicks = (applicableResults, pickType) => {
       } else if (checkKickers(pick, kickers)) {
         return { ...pick, points: pointValues.kicker };
       }
+
       return pick;
     });
+
+    const classTotal = calculateTotal(updatedPicks);
 
     return {
       ...picksToCalculate,
       [pickType]: updatedPicks,
-      totalPoints: picksToCalculate.totalPoints + calculateTotal(updatedPicks),
-      hasBeenEquated: false,
+      [pointType]: classTotal,
+      totalPoints: picksToCalculate.totalPoints + classTotal,
+      hasBeenEquated: true,
     };
   };
 };
@@ -92,7 +96,7 @@ export const assignRankings = (currentPicks) => {
     8: "th",
     9: "th",
     0: "th",
-    tied: " (Tied)",
+    tied: "(Tied)",
   };
 
   const sortedPicks = currentPicks.sort(
@@ -120,7 +124,7 @@ export const assignRankings = (currentPicks) => {
 
     return {
       ...pick,
-      rank: `${rank + (isAForwardTie || isABackwardsTie ? rankText.tied : "")}`,
+      rank: `${rank} ${isAForwardTie || isABackwardsTie ? rankText.tied : ""}`,
     };
   });
 };
