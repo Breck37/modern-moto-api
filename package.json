@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "jest": "^27.0.6",
-    "mongodb": "^3.6.10"
+    "mongodb": "^4.0.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.14.7",
