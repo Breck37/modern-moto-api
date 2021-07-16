@@ -1,11 +1,11 @@
 import connectToDatabase from "../utils/connectToDatabase";
 
-const filterAndGetApplicableResults = (results, fastestLap = []) => {
+const filterAndGetApplicableResults = (results, fastestLap) => {
   const applicableResults = results.filter((result) => {
     if (!result) return false;
     return [1, 2, 3, 4, 5, 10].includes(result.position || results.overall);
   });
-  applicableResults.push(...fastestLap);
+  applicableResults.push(fastestLap);
   return applicableResults;
 };
 
