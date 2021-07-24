@@ -62,7 +62,7 @@ module.exports = async (req, res) => {
 
     console.log('CONNECT', { connectToDatabase })
 
-    const db = await connectToDatabase(process.env.MONGO_URI);
+    const db = await connectToDatabase.default(process.env.MONGO_URI);
 
     let user = await db.collection("users").findOne({ email });
 
