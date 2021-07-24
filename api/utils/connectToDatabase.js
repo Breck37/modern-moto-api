@@ -13,6 +13,8 @@ export default async function connectToDatabase(uri) {
     return cachedDb
   }
 
+  console.log('M', { MongoClient });
+
   // If no connection is cached, create a new one
   const client = await MongoClient.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 
