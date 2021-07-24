@@ -60,8 +60,6 @@ module.exports = async (req, res) => {
       });
     }
 
-    console.log('CONNECT', { connectToDatabase })
-
     const db = await connectToDatabase.default(process.env.MONGO_URI);
 
     let user = await db.collection("users").findOne({ email });
@@ -128,7 +126,6 @@ module.exports = async (req, res) => {
     const {
       email,
     } = req.query;
-    console.log({ error })
 
     return res.status(200).json({
       success: false,
