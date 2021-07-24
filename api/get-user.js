@@ -126,11 +126,13 @@ module.exports = async (req, res) => {
     const {
       email,
     } = req.query;
+    console.log({ error })
 
     return res.status(200).json({
       success: false,
       message: "failure",
-      emailUsed: email
+      emailUsed: email,
+      error
     })
   }
 };
