@@ -6,6 +6,7 @@
   "repository": "https://github.com/Breck37/modern-moto-api",
   "author": "Breck37",
   "license": "MIT",
+  "type": "commonjs",
   "private": false,
   "scripts": {
     "test": "jest"

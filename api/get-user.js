@@ -1,4 +1,4 @@
-import connectToDatabase from "./utils/connectToDatabase";
+const connectToDatabase = require("./utils/connectToDatabase");
 
 // const createUser = async ({ email }) => {
 //   if (!email) {
@@ -60,7 +60,7 @@ module.exports = async (req, res) => {
       });
     }
 
-    const db = await connectToDatabase(process.env.MONGO_URI);
+    const db = await connectToDatabase.default(process.env.MONGO_URI);
 
     let user = await db.collection("users").findOne({ email });
 
@@ -130,7 +130,8 @@ module.exports = async (req, res) => {
     return res.status(200).json({
       success: false,
       message: "failure",
-      emailUsed: email
+      emailUsed: email,
+      error
     })
   }
 };
