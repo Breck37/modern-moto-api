@@ -1,4 +1,4 @@
-import connectToDatabase from "./utils/connectToDatabase";
+const connectToDatabase = require("./utils/connectToDatabase");
 
 // const createUser = async ({ email }) => {
 //   if (!email) {
