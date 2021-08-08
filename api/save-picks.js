@@ -7,7 +7,9 @@ module.exports = async (req, res) => {
     bigBikePicks,
     smallBikePicks = [],
     week,
-    league = "",
+    league = "League of Extraordinary Bros",
+    type,
+    year = new Date().getFullYear()
   } = req.body;
 
   if (!Array.isArray(bigBikePicks) || !bigBikePicks.length) {
@@ -20,19 +22,20 @@ module.exports = async (req, res) => {
     user,
     email,
     week,
-    year: new Date().getFullYear(),
+    year,
     bigBikePicks,
     smallBikePicks,
     totalPoints: 0,
     hasBeenEquated: false,
     league,
+    type,
     rank: null,
     created_at: new Date(),
   };
 
   await db
     .collection("picks")
-    .replaceOne({ email, week }, formattedUserPicks, { upsert: true });
+    .replaceOne({ email, week, type, year }, formattedUserPicks, { upsert: true });
 
   res.status(200).json({ success: true, bigBikePicks, email, week });
 };

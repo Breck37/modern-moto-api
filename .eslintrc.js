@@ -3,6 +3,8 @@ module.exports = {
         "browser": true,
         "es2021": true,
         "node": true,
+        "jest/globals": true,
+        "jest": true
     },
     "extends": [
         "eslint:recommended",
@@ -13,11 +15,11 @@ module.exports = {
             "jsx": true
         },
         "ecmaVersion": 12,
-        "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "jest"
     ],
     "rules": {
-    }
+    },
 };

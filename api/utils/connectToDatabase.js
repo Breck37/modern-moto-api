@@ -1,5 +1,5 @@
 // Import Dependencies
-const MongoClient = require('mongodb').MongoClient
+const MongoClient = require('mongodb').MongoClient;
 
 // Create cached connection variable
 let cachedDb = null

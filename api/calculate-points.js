@@ -1,4 +1,4 @@
-import connectToDatabase from "./utils/connectToDatabase";
+import connectToDatabase from "../utils/connectToDatabase";
 
 const filterAndGetApplicableResults = (results, fastestLap) => {
   const applicableResults = results.filter((result) => {
@@ -23,25 +23,25 @@ const calculateTotal = (userPicks) => {
 };
 
 const checkSame = (userPick, topFive) => {
-  return topFive.find(
-    (result) =>
-      result.riderName.trim() === userPick.riderName.trim() &&
+  if (!userPick) return false;
+  return topFive.filter(Boolean).find(
+    (result) => result.riderName.trim() === userPick.riderName.trim() &&
       result.position === userPick.position
   );
 };
 
 const checkDifferent = (userPick, topFive) => {
-  return topFive.find(
-    (result) =>
-      result.riderName.trim() === userPick.riderName.trim() &&
+  if (!userPick) return false;
+  return topFive.filter(Boolean).find(
+    (result) => result.riderName.trim() === userPick.riderName.trim() &&
       result.position !== userPick.position
   );
 };
 
 const checkKickers = (userPick, kickers) => {
-  return kickers.find(
-    (result) =>
-      result.riderName.trim() === userPick.riderName.trim() &&
+  if (!userPick) return false;
+  return kickers.filter(Boolean).find(
+    (result) => result.riderName.trim() === userPick.riderName.trim() &&
       result.position === userPick.position
   );
 };
@@ -126,21 +126,28 @@ const assignRankings = (currentPicks) => {
 };
 
 module.exports = async (req, res) => {
-  const { week } = req.query;
+  const { week, type, season } = req.query;
   const { raceResults } = req.body;
 
   const db = await connectToDatabase(process.env.MONGO_URI);
 
   const currentWeekPicks = await db
     .collection("picks")
-    .find({ week: parseInt(week), hasBeenEquated: false })
+    .find({ week: parseInt(week), hasBeenEquated: false, type })
     .project({ user: 1, bigBikePicks: 1, league: 1, totalPoints: 1 })
     .toArray();
+  let fastestLap = null;
+
+  const fastestLap = raceResults.fastestLaps ? {
+        ...raceResults.fastestLaps[0],
+        riderName: raceResults.fastestLaps[0].riderName,
+        position: 100,
+      } : null;
 
   // save race results to DB
   await db
     .collection("results")
-    .updateOne({ week }, { $set: { raceResults, week } }, { upsert: true });
+    .updateOne({ week, type }, { $set: { raceResults, week, fastestLap, season } }, { upsert: true });
 
   if (
     !currentWeekPicks ||
@@ -154,16 +161,8 @@ module.exports = async (req, res) => {
     return;
   }
 
-  const fastestLap = raceResults.liveResults.fastestLaps
-    ? {
-        ...raceResults.liveResults.fastestLaps[0],
-        name: raceResults.liveResults.fastestLaps[0].riderName,
-        number: raceResults.liveResults.fastestLaps[0].number,
-        position: 100,
-      }
-    : null;
   const applicableResults = filterAndGetApplicableResults(
-    raceResults.liveResults.raceResults,
+    raceResults.raceResults,
     fastestLap
   );
 
@@ -176,14 +175,14 @@ module.exports = async (req, res) => {
   // Save Calculated Picks
   await Promise.all(
     await calculatedPicks.map(async (pick) => {
-      const { bigBikePicks, totalPoints, hasBeenEquated, rank } = pick;
+      const { bigBikePicks, totalPoints, rank } = pick;
       const updatedPick = await db.collection("picks").updateOne(
         { _id: pick._id },
         {
           $set: {
             bigBikePicks,
             totalPoints,
-            hasBeenEquated,
+            hasBeenEquated: true,
             rank,
           },
         }

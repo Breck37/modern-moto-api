@@ -6,12 +6,24 @@
   "repository": "https://github.com/Breck37/modern-moto-api",
   "author": "Breck37",
   "license": "MIT",
+  "type": "commonjs",
   "private": false,
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
-    "mongodb": "^3.6.4"
+    "jest": "^27.0.6",
+    "mongodb": "^4.0.1"
   },
   "devDependencies": {
-    "eslint": "^7.24.0",
-    "eslint-plugin-react": "^7.23.2"
+    "@babel/preset-env": "^7.14.7",
+    "babel-jest": "^27.0.6",
+    "eslint": "^7.30.0",
+    "eslint-plugin-react": "^7.24.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
   }
 }
