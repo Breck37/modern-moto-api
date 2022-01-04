@@ -23,7 +23,7 @@ module.exports = [
       { riderName: 'Jett Lawrence', position: 102, points: 0 }
     ],
     totalPoints: 80,
-    hasBeenEquated: false,
+    hasBeenEquated: true,
     league: 'League of Extraordinary Bros',
     email: 'jonesinaz@aol.com',
     type: 'mx',
@@ -56,7 +56,7 @@ module.exports = [
       { riderName: 'Jett Lawrence', position: 102, points: 0 }
     ],
     totalPoints: 65,
-    hasBeenEquated: false,
+    hasBeenEquated: true,
     league: 'League of Extraordinary Bros',
     email: 'tdmonk1@asu.edu',
     type: 'mx',
@@ -89,7 +89,7 @@ module.exports = [
       { riderName: 'Jett Lawrence', position: 102, points: 0 }
     ],
     totalPoints: 55,
-    hasBeenEquated: false,
+    hasBeenEquated: true,
     league: 'League of Extraordinary Bros',
     email: 'kyler.hopper@gmail.com',
     type: 'mx',
@@ -122,7 +122,7 @@ module.exports = [
       { riderName: 'Jett Lawrence', position: 102, points: 0 }
     ],
     totalPoints: 55,
-    hasBeenEquated: false,
+    hasBeenEquated: true,
     league: 'League of Extraordinary Bros',
     email: 'kohl92@gmail.com',
     type: 'mx',
@@ -155,7 +155,7 @@ module.exports = [
       { riderName: 'Jett Lawrence', position: 102, points: 0 }
     ],
     totalPoints: 55,
-    hasBeenEquated: false,
+    hasBeenEquated: true,
     league: 'League of Extraordinary Bros',
     email: 'lbhammett22@gmail.com',
     type: 'mx',
@@ -188,7 +188,7 @@ module.exports = [
       { riderName: 'Jett Lawrence', position: 102, points: 0 }
     ],
     totalPoints: 40,
-    hasBeenEquated: false,
+    hasBeenEquated: true,
     league: 'League of Extraordinary Bros',
     email: 'brent.eckert7@gmail.com',
     type: 'mx',

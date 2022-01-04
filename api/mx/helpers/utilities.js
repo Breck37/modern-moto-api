@@ -124,7 +124,7 @@ export const assignRankings = (currentPicks) => {
 
     return {
       ...pick,
-      rank: `${rank} ${isAForwardTie || isABackwardsTie ? rankText.tied : ""}`,
+      rank: `${rank} ${isAForwardTie || isABackwardsTie ? rankText.tied : ""}`.trim(),
     };
   });
 };
