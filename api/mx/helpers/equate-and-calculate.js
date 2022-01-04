@@ -1,7 +1,7 @@
 import {
   assignRankings,
   calculatePointsForUserPicks,
-  filterAndGetApplicableResults,
+  filterAndGetApplicableResults
 } from "./utilities";
 const util = require("util");
 

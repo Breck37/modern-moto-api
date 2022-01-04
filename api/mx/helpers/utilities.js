@@ -58,7 +58,7 @@ export const calculatePointsForUserPicks = (applicableResults, pickType, pointTy
         .filter((result) => result.position !== 10 && result.position !== 100);
       const kickers = applicableResults
         .filter(Boolean)
-        .filter((result) => result.position === 10 || result.position === 101 || result.position === 102);
+        .filter((result) => result.position === 10 || result.position === 100 || result.position === 101 || result.position === 102);
 
 
       if (!isKickerPick && checkSame(pick, topFive)) {
