@@ -1,9 +1,9 @@
-import mockResults from "./mock-results";
-import mockUncalculatePicks from "./mock-uncalculate-picks";
 import expectedEquatedPicks from ".//expected-equated-picks";
+import mockResults from "./mock-results";
+import mockUncalculatedPicks from "./mock-uncalculated-picks";
 
 module.exports = {
   mockResults,
-  mockUncalculatePicks,
+  mockUncalculatedPicks,
   expectedEquatedPicks
 }

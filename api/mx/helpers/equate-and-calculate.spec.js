@@ -1,9 +1,9 @@
-import { mockResults, mockUncalculatePicks, expectedEquatedPicks } from '../helpers/test-utils';
+import { expectedEquatedPicks, mockResults, mockUncalculatedPicks } from './test-utils';
 import equateAndCalculate from './equate-and-calculate';
 
 describe('mx - Equate and Calculate Points', () => {
   it('returns empty object if either value is empty', () => {
-    const emptyRaceResults = equateAndCalculate(null, mockUncalculatePicks);
+    const emptyRaceResults = equateAndCalculate(null, mockUncalculatedPicks);
     const emptyPicksToCalculate = equateAndCalculate(mockResults, []);
     const nullPicksToCalculate = equateAndCalculate(mockResults, null);
     expect(emptyRaceResults).toEqual({});
@@ -12,8 +12,8 @@ describe('mx - Equate and Calculate Points', () => {
   })
   
   it('successfully equates picks and fastest lap', () => {
-    const equatedResults = equateAndCalculate(mockResults, mockUncalculatePicks);
-    console.log({ equatedResults })
+    const equatedResults = equateAndCalculate(mockResults, mockUncalculatedPicks);
+    
     expect(equatedResults.calculatedPicks).toMatchObject(expectedEquatedPicks)
   })
 })
