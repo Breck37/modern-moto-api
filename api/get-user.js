@@ -45,12 +45,21 @@ const compileLeaguePicks = (leaguePicks, currentPick) => {
 };
 
 module.exports = async (req, res) => {
+  console.log('HIT GET USER')
   try {
     const {
       email,
       week,
-      type 
+      type,
+      league
     } = req.query;
+
+    console.log('QUERY', {
+      email,
+      week,
+      type,
+      league
+    })
 
     if (!email) {
       return res.status(200).json({
@@ -63,6 +72,7 @@ module.exports = async (req, res) => {
     const db = await connectToDatabase.default(process.env.MONGO_URI);
 
     let user = await db.collection("users").findOne({ email });
+    console.log('IN GET', { user, req: req.query })
 
     if (!user) {
       return res.status(200).json({
@@ -72,36 +82,32 @@ module.exports = async (req, res) => {
         emailUsed: email
       });
     }
+    const userHistoryQuery = { user: user.username };
 
-    const pickQuery = { user: user.username };
+    const userHistory = await db.collection("picks").find(userHistoryQuery).toArray();
 
-    if (type) {
-      pickQuery.type = type;
-    }
+    const currentRoumdQuery = { ...userHistoryQuery, type, week };
 
-    const picks = await db
+    console.log({ userHistory: userHistory[0] })
+    const currentRound = await db
       .collection("picks")
       .find(
-        pickQuery,
+        currentRoumdQuery,
         {
           bigBikePicks: 1,
           rank: 1,
           totalPoints: 1,
           user: 1,
           league: 1,
-          smallBikePicks: 0,
+          smallBikePicks: 1,
           week: 0,
           _id: 0
         }
       )
       .toArray();
+      console.log({ currentRound })
 
-    if (Array.isArray(picks) && picks.length && picks[0].league) {
-      const query = { league: picks[0].league };
-
-      if (week) {
-        query.week = parseInt(week);
-      }
+      const query = { league: league ?? currentRound[0].league, week, type };
 
       const leaguePicks = await db
         .collection("picks")
@@ -115,14 +121,16 @@ module.exports = async (req, res) => {
           week: 0,
         })
         .toArray();
+        console.log({ leaguePicks })
 
-      user.leaguePicks = leaguePicks.reduce(compileLeaguePicks, {}) || null;;
-      user.picks = picks
-    }
+      user.leaguePicks = leaguePicks.reduce(compileLeaguePicks, {}) || null;
+      user.currentRound = currentRound;
+      user.history = userHistory;
 
-
+      console.log({ user })
     return res.status(200).json({ success: true, user });
   } catch (error) {
+    console.log({ error })
     const {
       email,
     } = req.query;
