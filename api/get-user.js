@@ -87,6 +87,7 @@ module.exports = async (req, res) => {
     })
     user.currentRound = currentRound;
     user.history = userHistory.reduce(compileLeaguePicks, {});
+    console.log({ user })
     return res.status(200).json({ success: true, user });
   } catch (error) {
     console.log({ error });
