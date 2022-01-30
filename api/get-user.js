@@ -54,7 +54,7 @@ module.exports = async (req, res) => {
       .find(userHistoryQuery)
       .toArray();
 
-    const currentRoumdQuery = { ...userHistoryQuery, type, week };
+    const currentRoumdQuery = { ...userHistoryQuery, type, week: parseInt(week) };
 
     const currentRound = await db
     .collection("picks")
