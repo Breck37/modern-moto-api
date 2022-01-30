@@ -69,7 +69,7 @@ module.exports = async (req, res) => {
       _id: 0,
     })
     .toArray();
-    console.log({  currentRoumdQuery, currentRound })
+    console.log({  currentRoumdQuery, currentRound, type, week, year })
 
     const leagues = await Promise.all(
       (user.leagues || [])
