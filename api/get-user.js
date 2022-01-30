@@ -57,18 +57,19 @@ module.exports = async (req, res) => {
     const currentRoumdQuery = { ...userHistoryQuery, type, week };
 
     const currentRound = await db
-      .collection("picks")
-      .find(currentRoumdQuery, {
-        bigBikePicks: 1,
-        rank: 1,
-        totalPoints: 1,
-        user: 1,
-        league: 1,
-        smallBikePicks: 1,
-        week: 0,
-        _id: 0,
-      })
-      .toArray();
+    .collection("picks")
+    .find(currentRoumdQuery, {
+      bigBikePicks: 1,
+      rank: 1,
+      totalPoints: 1,
+      user: 1,
+      league: 1,
+      smallBikePicks: 1,
+      week: 0,
+      _id: 0,
+    })
+    .toArray();
+    console.log({  currentRoumdQuery, currentRound })
 
     const leagues = await Promise.all(
       (user.leagues || [])
