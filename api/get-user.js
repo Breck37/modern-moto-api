@@ -25,7 +25,7 @@ const { decipher } = require('./utils/helpers/decipher');
 
 module.exports = async (req, res) => {
   try {
-    const { email, week, type } = req.query;
+    const { email, week, type, year } = req.query;
 
     if (!email) {
       return res.status(200).json({
@@ -54,21 +54,22 @@ module.exports = async (req, res) => {
       .find(userHistoryQuery)
       .toArray();
 
-    const currentRoumdQuery = { ...userHistoryQuery, type, week };
+    const currentRoumdQuery = { ...userHistoryQuery, type, week: parseInt(week), year: parseInt(year) };
 
     const currentRound = await db
-      .collection("picks")
-      .find(currentRoumdQuery, {
-        bigBikePicks: 1,
-        rank: 1,
-        totalPoints: 1,
-        user: 1,
-        league: 1,
-        smallBikePicks: 1,
-        week: 0,
-        _id: 0,
-      })
-      .toArray();
+    .collection("picks")
+    .find(currentRoumdQuery, {
+      bigBikePicks: 1,
+      rank: 1,
+      totalPoints: 1,
+      user: 1,
+      league: 1,
+      smallBikePicks: 1,
+      week: 0,
+      _id: 0,
+    })
+    .toArray();
+    console.log({  currentRoumdQuery, currentRound, type, week, year })
 
     const leagues = await Promise.all(
       (user.leagues || [])
@@ -85,8 +86,9 @@ module.exports = async (req, res) => {
     user.leaguePicks = leagues.map(leaguePick => {
       return leaguePick.reduce(compileLeaguePicks, {}) || null;
     })
-    user.currentRound = currentRound;
+    user.currentRound = currentRound?.length ? currentRound[0] : currentRound;
     user.history = userHistory.reduce(compileLeaguePicks, {});
+    console.log({ user })
     return res.status(200).json({ success: true, user });
   } catch (error) {
     console.log({ error });
