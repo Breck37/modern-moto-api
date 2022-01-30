@@ -25,7 +25,7 @@ const { decipher } = require('./utils/helpers/decipher');
 
 module.exports = async (req, res) => {
   try {
-    const { email, week, type } = req.query;
+    const { email, week, type, year } = req.query;
 
     if (!email) {
       return res.status(200).json({
@@ -54,7 +54,7 @@ module.exports = async (req, res) => {
       .find(userHistoryQuery)
       .toArray();
 
-    const currentRoumdQuery = { ...userHistoryQuery, type, week: parseInt(week) };
+    const currentRoumdQuery = { ...userHistoryQuery, type, week: parseInt(week), year: parseInt(year) };
 
     const currentRound = await db
     .collection("picks")
