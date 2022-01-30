@@ -86,7 +86,7 @@ module.exports = async (req, res) => {
     user.leaguePicks = leagues.map(leaguePick => {
       return leaguePick.reduce(compileLeaguePicks, {}) || null;
     })
-    user.currentRound = currentRound;
+    user.currentRound = currentRound?.length ? currentRound[0] : currentRound;
     user.history = userHistory.reduce(compileLeaguePicks, {});
     console.log({ user })
     return res.status(200).json({ success: true, user });
