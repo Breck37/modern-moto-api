@@ -25,7 +25,7 @@ const calculateTotal = (userPicks) => {
 const checkSame = (userPick, topFive) => {
   if (!userPick) return false;
   return topFive.filter(Boolean).find(
-    (result) => result.riderName.trim() === userPick.riderName.trim() &&
+    (result) => result.name.trim() === userPick.name.trim() &&
       result.position === userPick.position
   );
 };
@@ -33,7 +33,7 @@ const checkSame = (userPick, topFive) => {
 const checkDifferent = (userPick, topFive) => {
   if (!userPick) return false;
   return topFive.filter(Boolean).find(
-    (result) => result.riderName.trim() === userPick.riderName.trim() &&
+    (result) => result.name.trim() === userPick.name.trim() &&
       result.position !== userPick.position
   );
 };
@@ -41,7 +41,7 @@ const checkDifferent = (userPick, topFive) => {
 const checkKickers = (userPick, kickers) => {
   if (!userPick) return false;
   return kickers.filter(Boolean).find(
-    (result) => result.riderName.trim() === userPick.riderName.trim() &&
+    (result) => result.name.trim() === userPick.name.trim() &&
       result.position === userPick.position
   );
 };
@@ -140,7 +140,7 @@ module.exports = async (req, res) => {
 
   const fastestLap = raceResults.fastestLaps ? {
         ...raceResults.fastestLaps[0],
-        riderName: raceResults.fastestLaps[0].riderName,
+        name: raceResults.fastestLaps[0].name,
         position: 100,
       } : null;
 

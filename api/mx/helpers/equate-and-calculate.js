@@ -23,14 +23,14 @@ module.exports = (pdfResults, picksToCalculate) => {
       if (key === "bigBikeLapTimesMoto1") {
         acc.push({
           ...value[0],
-          name: value[0].riderName,
+          name: value[0].name,
           position: 101,
         });
       }
       if (key === "bigBikeLapTimesMoto2") {
         acc.push({
           ...value[0],
-          name: value[0].riderName,
+          name: value[0].name,
           position: 102,
         });
       }
@@ -43,14 +43,14 @@ module.exports = (pdfResults, picksToCalculate) => {
       if (key === "smallBikeLapTimesMoto1") {
         acc.push({
           ...value[0],
-          name: value[0].riderName,
+          name: value[0].name,
           position: 101,
         });
       }
       if (key === "smallBikeLapTimesMoto2") {
         acc.push({
           ...value[0],
-          name: value[0].riderName,
+          name: value[0].name,
           position: 102,
         });
       }

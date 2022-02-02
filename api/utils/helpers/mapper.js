@@ -21,7 +21,7 @@ const manufacturers = [
   "Yamaha",
 ];
 
-const parseRiderName = (name) => {
+const parsename = (name) => {
   const splitName = name.split(" ");
   let parsedName;
   splitName.map((nameElement) => {
@@ -39,7 +39,7 @@ const parseRiderName = (name) => {
 const splitRiderResults = (rider, position) => {
   return {
     number: rider[0],
-    name: parseRiderName(rider[1]),
+    name: parsename(rider[1]),
     points: rider[2],
     position,
   };
