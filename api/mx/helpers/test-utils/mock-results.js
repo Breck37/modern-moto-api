@@ -3,97 +3,97 @@ module.exports = {
     big: [
       {
         number: "14",
-        riderName: "Dylan Ferrandis",
+        name: "Dylan Ferrandis",
         points: "46",
         position: 1,
       },
       {
         number: "3",
-        riderName: "Eli Tomac",
+        name: "Eli Tomac",
         points: "43",
         position: 2,
       },
       {
         number: "7",
-        riderName: "Aaron Plessinger",
+        name: "Aaron Plessinger",
         points: "40",
         position: 3,
       },
       {
         number: "94",
-        riderName: "Ken Roczen",
+        name: "Ken Roczen",
         points: "35",
         position: 4,
       },
       {
         number: "29",
-        riderName: "Christian Craig",
+        name: "Christian Craig",
         points: "32",
         position: 5,
       },
       {
         number: "23",
-        riderName: "Chase Sexton",
+        name: "Chase Sexton",
         points: "31",
         position: 6,
       },
       {
         number: "2",
-        riderName: "Cooper Webb",
+        name: "Cooper Webb",
         points: "26",
         position: 7,
       },
       {
         number: "51",
-        riderName: "Justin Barcia",
+        name: "Justin Barcia",
         points: "25",
         position: 8,
       },
       {
         number: "17",
-        riderName: "Joseph Savatgy",
+        name: "Joseph Savatgy",
         points: "22",
         position: 9,
       },
       {
         number: "28",
-        riderName: "Brandon Hartranft",
+        name: "Brandon Hartranft",
         points: "18",
         position: 10,
       },
       {
         number: "72",
-        riderName: "Coty Schock",
+        name: "Coty Schock",
         points: "17",
         position: 11,
       },
       {
         number: "43",
-        riderName: "Fredrik Noren",
+        name: "Fredrik Noren",
         points: "15",
         position: 12,
       },
       {
         number: "9",
-        riderName: "Adam Cianciarulo",
+        name: "Adam Cianciarulo",
         points: "15",
         position: 13,
       },
       {
         number: "25",
-        riderName: "Marvin Musquin",
+        name: "Marvin Musquin",
         points: "14",
         position: 14,
       },
       {
         number: "19",
-        riderName: "Justin Bogle",
+        name: "Justin Bogle",
         points: "14",
         position: 15,
       },
       {
         number: "34",
-        riderName: "Max Anstie",
+        name: "Max Anstie",
         points: "10",
         position: 16,
       },
@@ -101,139 +101,139 @@ module.exports = {
     small: [
       {
         number: "24",
-        riderName: "RJ Hampshire",
+        name: "RJ Hampshire",
         points: "44",
         position: 1,
       },
       {
         number: "32",
-        riderName: "Justin Cooper",
+        name: "Justin Cooper",
         points: "43",
         position: 2,
       },
       {
         number: "18",
-        riderName: "Jett Lawrence",
+        name: "Jett Lawrence",
         points: "40",
         position: 3,
       },
       {
         number: "41",
-        riderName: "Hunter Lawrence",
+        name: "Hunter Lawrence",
         points: "38",
         position: 4,
       },
       {
         number: "6",
-        riderName: "Jeremy Martin",
+        name: "Jeremy Martin",
         points: "36",
         position: 5,
       },
       {
         number: "30",
-        riderName: "Jo Shimoda",
+        name: "Jo Shimoda",
         points: "31",
         position: 6,
       },
       {
         number: "45",
-        riderName: "Pierce Brown",
+        name: "Pierce Brown",
         points: "28",
         position: 7,
       },
       {
         number: "67",
-        riderName: "Stilez Robertson",
+        name: "Stilez Robertson",
         points: "22",
         position: 8,
       },
       {
         number: "115",
-        riderName: "Maximus Vohland",
+        name: "Maximus Vohland",
         points: "21",
         position: 9,
       },
       {
         number: "47",
-        riderName: "Jalek Swoll",
+        name: "Jalek Swoll",
         points: "20",
         position: 10,
       },
       {
         number: "48",
-        riderName: "Garrett Marchbanks",
+        name: "Garrett Marchbanks",
         points: "18",
         position: 11,
       },
       {
         number: "147",
-        riderName: "Levi Kitchen",
+        name: "Levi Kitchen",
         points: "14",
         position: 12,
       },
       {
         number: "91",
-        riderName: "Nathanael Thrasher",
+        name: "Nathanael Thrasher",
         points: "12",
         position: 13,
       },
       {
         number: "39",
-        riderName: "Carson Mumford",
+        name: "Carson Mumford",
         points: "11",
         position: 14,
       },
       {
         number: "75",
-        riderName: "Ty Masterpool",
+        name: "Ty Masterpool",
         points: "11",
         position: 15,
       },
       {
         number: "38",
-        riderName: "Austin Forkner",
+        name: "Austin Forkner",
         points: "10",
         position: 16,
       },
       {
         number: "64",
-        riderName: "Colt Nichols",
+        name: "Colt Nichols",
         points: "10",
         position: 17,
       },
       {
         number: "59",
-        riderName: "Jarrett Frye",
+        name: "Jarrett Frye",
         points: "9",
         position: 18,
       },
       {
         number: "90",
-        riderName: "Dilan Schwartz",
+        name: "Dilan Schwartz",
         points: "9",
         position: 19,
       },
       {
         number: "241",
-        riderName: "Joshua Varize",
+        name: "Joshua Varize",
         points: "7",
         position: 20,
       },
       {
         number: "42",
-        riderName: "Michael Mosiman",
+        name: "Michael Mosiman",
         points: "6",
         position: 21,
       },
       {
         number: "800",
-        riderName: "Jace Kessler",
+        name: "Jace Kessler",
         points: "2",
         position: 22,
       },
       {
         number: "0",
-        riderName: "034 undefined",
+        name: "034 undefined",
         points: "34",
         position: 40,
       },
@@ -500,208 +500,208 @@ module.exports = {
   fastLapResults: {
     bigBikeLapTimesMoto1: [
       {
-        riderName: "D. Ferrandis",
+        name: "D. Ferrandis",
         bestLap: "206966",
         actualLap: "2:06.966",
       },
       {
-        riderName: "A. Plessinger",
+        name: "A. Plessinger",
         bestLap: "207761",
         actualLap: "2:07.761",
       },
       {
-        riderName: "E. Tomac",
+        name: "E. Tomac",
         bestLap: "208091",
         actualLap: "2:08.091",
       },
       {
-        riderName: "K. Roczen",
+        name: "K. Roczen",
         bestLap: "208275",
         actualLap: "2:08.275",
       },
       {
-        riderName: "A. Cianciarulo",
+        name: "A. Cianciarulo",
         bestLap: "208619",
         actualLap: "2:08.619",
       },
       {
-        riderName: "C. Sexton",
+        name: "C. Sexton",
         bestLap: "209275",
         actualLap: "2:09.275",
       },
       {
-        riderName: "C. Craig",
+        name: "C. Craig",
         bestLap: "209712",
         actualLap: "2:09.712",
       },
       {
-        riderName: "M. Musquin",
+        name: "M. Musquin",
         bestLap: "209862",
         actualLap: "2:09.862",
       },
       {
-        riderName: "C. Webb",
+        name: "C. Webb",
         bestLap: "209938",
         actualLap: "2:09.938",
       },
       {
-        riderName: "J. Barcia",
+        name: "J. Barcia",
         bestLap: "210309",
         actualLap: "2:10.309",
       },
     ],
     bigBikeLapTimesMoto2: [
       {
-        riderName: "K. Roczen",
+        name: "K. Roczen",
         bestLap: "207921",
         actualLap: "2:07.921",
       },
       {
-        riderName: "D. Ferrandis",
+        name: "D. Ferrandis",
         bestLap: "207924",
         actualLap: "2:07.924",
       },
       {
-        riderName: "E. Tomac",
+        name: "E. Tomac",
         bestLap: "208187",
         actualLap: "2:08.187",
       },
       {
-        riderName: "A. Plessinger",
+        name: "A. Plessinger",
         bestLap: "208284",
         actualLap: "2:08.284",
       },
       {
-        riderName: "C. Sexton",
+        name: "C. Sexton",
         bestLap: "208648",
         actualLap: "2:08.648",
       },
       {
-        riderName: "July 03, 2021page 1",
+        name: "July 03, 2021page 1",
         bestLap: "209737",
         actualLap: "2:09.737",
       },
       {
-        riderName: "M. Musquin",
+        name: "M. Musquin",
         bestLap: "209891",
         actualLap: "2:09.891",
       },
       {
-        riderName: "J. Barcia",
+        name: "J. Barcia",
         bestLap: "210928",
         actualLap: "2:10.928",
       },
       {
-        riderName: "C. Webb",
+        name: "C. Webb",
         bestLap: "211283",
         actualLap: "2:11.283",
       },
       {
-        riderName: "J. Savatgy",
+        name: "J. Savatgy",
         bestLap: "213138",
         actualLap: "2:13.138",
       },
     ],
     smallBikeLapTimesMoto1: [
       {
-        riderName: "R. Hampshire",
+        name: "R. Hampshire",
         bestLap: "208475",
         actualLap: "2:08.475",
       },
       {
-        riderName: "J. Lawrence",
+        name: "J. Lawrence",
         bestLap: "208749",
         actualLap: "2:08.749",
       },
       {
-        riderName: "H. Lawrence",
+        name: "H. Lawrence",
         bestLap: "209946",
         actualLap: "2:09.946",
       },
       {
-        riderName: "M. Mosiman",
+        name: "M. Mosiman",
         bestLap: "210328",
         actualLap: "2:10.328",
       },
       {
-        riderName: "S. Robertson",
+        name: "S. Robertson",
         bestLap: "210389",
         actualLap: "2:10.389",
       },
       {
-        riderName: "J. Cooper",
+        name: "J. Cooper",
         bestLap: "210649",
         actualLap: "2:10.649",
       },
       {
-        riderName: "J. Martin",
+        name: "J. Martin",
         bestLap: "211313",
         actualLap: "2:11.313",
       },
       {
-        riderName: "P. Brown",
+        name: "P. Brown",
         bestLap: "211316",
         actualLap: "2:11.316",
       },
       {
-        riderName: "J. Shimoda",
+        name: "J. Shimoda",
         bestLap: "211417",
         actualLap: "2:11.417",
       },
       {
-        riderName: "July 03, 2021page 2",
+        name: "July 03, 2021page 2",
         bestLap: "211463",
         actualLap: "2:11.463",
       },
     ],
     smallBikeLapTimesMoto2: [
       {
-        riderName: "R. Hampshire",
+        name: "R. Hampshire",
         bestLap: "209447",
         actualLap: "2:09.447",
       },
       {
-        riderName: "J. Cooper",
+        name: "J. Cooper",
         bestLap: "209539",
         actualLap: "2:09.539",
       },
       {
-        riderName: "J. Lawrence",
+        name: "J. Lawrence",
         bestLap: "209845",
         actualLap: "2:09.845",
       },
       {
-        riderName: "H. Lawrence",
+        name: "H. Lawrence",
         bestLap: "210418",
         actualLap: "2:10.418",
       },
       {
-        riderName: "S. Robertson",
+        name: "S. Robertson",
         bestLap: "211047",
         actualLap: "2:11.047",
       },
       {
-        riderName: "J. Martin",
+        name: "J. Martin",
         bestLap: "211119",
         actualLap: "2:11.119",
       },
       {
-        riderName: "P. Brown",
+        name: "P. Brown",
         bestLap: "211815",
         actualLap: "2:11.815",
       },
       {
-        riderName: "J. Shimoda",
+        name: "J. Shimoda",
         bestLap: "212134",
         actualLap: "2:12.134",
       },
       {
-        riderName: "N. Thrasher",
+        name: "N. Thrasher",
         bestLap: "212261",
         actualLap: "2:12.261",
       },
       {
-        riderName: "M. Mosiman",
+        name: "M. Mosiman",
         bestLap: "212468",
         actualLap: "2:12.468",
       },
@@ -712,7 +712,7 @@ module.exports = {
       {
         position: "1",
         number: "3",
-        riderName: "E. Tomac",
+        name: "E. Tomac",
         bike: "KAW",
         hometown: "Cortez, CO",
         currentLap: "15",
@@ -725,7 +725,7 @@ module.exports = {
       {
         position: "2",
         number: "94",
-        riderName: "K. Roczen",
+        name: "K. Roczen",
         bike: "HON",
         hometown: "Germany",
         currentLap: "15",
@@ -738,7 +738,7 @@ module.exports = {
       {
         position: "3",
         number: "14",
-        riderName: "D. Ferrandis",
+        name: "D. Ferrandis",
         bike: "YAM",
         hometown: "France",
         currentLap: "15",
@@ -751,7 +751,7 @@ module.exports = {
       {
         position: "4",
         number: "51",
-        riderName: "J. Barcia",
+        name: "J. Barcia",
         bike: "GAS",
         hometown: "Greenville, FL",
         currentLap: "15",
@@ -764,7 +764,7 @@ module.exports = {
       {
         position: "5",
         number: "2",
-        riderName: "C. Webb",
+        name: "C. Webb",
         bike: "KTM",
         hometown: "Newport, NC",
         currentLap: "15",
@@ -777,7 +777,7 @@ module.exports = {
       {
         position: "6",
         number: "9",
-        riderName: "A. Cianciarulo",
+        name: "A. Cianciarulo",
         bike: "KAW",
         hometown: "Montverde, FL",
         currentLap: "15",
@@ -790,7 +790,7 @@ module.exports = {
       {
         position: "7",
         number: "25",
-        riderName: "M. Musquin",
+        name: "M. Musquin",
         bike: "KTM",
         hometown: "France",
         currentLap: "15",
@@ -803,7 +803,7 @@ module.exports = {
       {
         position: "8",
         number: "23",
-        riderName: "C. Sexton",
+        name: "C. Sexton",
         bike: "HON",
         hometown: "La Moille, IL",
         currentLap: "15",
@@ -816,7 +816,7 @@ module.exports = {
       {
         position: "9",
         number: "15",
-        riderName: "D. Wilson",
+        name: "D. Wilson",
         bike: "HQV",
         hometown: "United Kingdom",
         currentLap: "15",
@@ -829,7 +829,7 @@ module.exports = {
       {
         position: "10",
         number: "17",
-        riderName: "J. Savatgy",
+        name: "J. Savatgy",
         bike: "KTM",
         hometown: "Clermont, FL",
         currentLap: "15",
@@ -842,7 +842,7 @@ module.exports = {
       {
         position: "11",
         number: "28",
-        riderName: "B. Hartranft",
+        name: "B. Hartranft",
         bike: "SUZ",
         hometown: "Brick, NJ",
         currentLap: "15",
@@ -855,7 +855,7 @@ module.exports = {
       {
         position: "12",
         number: "34",
-        riderName: "M. Anstie",
+        name: "M. Anstie",
         bike: "SUZ",
         hometown: "United Kingdom",
         currentLap: "15",
@@ -868,7 +868,7 @@ module.exports = {
       {
         position: "13",
         number: "29",
-        riderName: "C. Craig",
+        name: "C. Craig",
         bike: "YAM",
         hometown: "Temecula, CA",
         currentLap: "15",
@@ -881,7 +881,7 @@ module.exports = {
       {
         position: "14",
         number: "376",
-        riderName: "C. Canning",
+        name: "C. Canning",
         bike: "KTM",
         hometown: "Conventry, CT",
         currentLap: "14",
@@ -894,7 +894,7 @@ module.exports = {
       {
         position: "15",
         number: "19",
-        riderName: "J. Bogle",
+        name: "J. Bogle",
         bike: "KTM",
         hometown: "Cushing, OK",
         currentLap: "14",
@@ -907,7 +907,7 @@ module.exports = {
       {
         position: "16",
         number: "57",
-        riderName: "J. Rodbell",
+        name: "J. Rodbell",
         bike: "KAW",
         hometown: "Prince Frederick, MD",
         currentLap: "14",
@@ -920,7 +920,7 @@ module.exports = {
       {
         position: "17",
         number: "314",
-        riderName: "T. Stepek",
+        name: "T. Stepek",
         bike: "KAW",
         hometown: "Mount Airy, MD",
         currentLap: "14",
@@ -933,7 +933,7 @@ module.exports = {
       {
         position: "18",
         number: "315",
-        riderName: "C. Groves",
+        name: "C. Groves",
         bike: "YAM",
         hometown: "Goldsboro, MD",
         currentLap: "14",
@@ -946,7 +946,7 @@ module.exports = {
       {
         position: "19",
         number: "270",
-        riderName: "J. Runkles",
+        name: "J. Runkles",
         bike: "GAS",
         hometown: "Sykesville, MD",
         currentLap: "14",
@@ -959,7 +959,7 @@ module.exports = {
       {
         position: "20",
         number: "97",
-        riderName: "B. LaMay",
+        name: "B. LaMay",
         bike: "KTM",
         hometown: "Anchorage, AK",
         currentLap: "14",
@@ -972,7 +972,7 @@ module.exports = {
       {
         position: "21",
         number: "11",
-        riderName: "K. Chisholm",
+        name: "K. Chisholm",
         bike: "YAM",
         hometown: "Valrico, FL",
         currentLap: "14",
@@ -985,7 +985,7 @@ module.exports = {
       {
         position: "22",
         number: "919",
-        riderName: "B. Borghesani",
+        name: "B. Borghesani",
         bike: "GAS",
         hometown: "Plymouth, MA",
         currentLap: "14",
@@ -998,7 +998,7 @@ module.exports = {
       {
         position: "23",
         number: "489",
-        riderName: "R. Randanella",
+        name: "R. Randanella",
         bike: "KAW",
         hometown: "Marlton, NJ",
         currentLap: "14",
@@ -1011,7 +1011,7 @@ module.exports = {
       {
         position: "24",
         number: "148",
-        riderName: "B. Hansen",
+        name: "B. Hansen",
         bike: "KAW",
         hometown: "Kaukauna, WI",
         currentLap: "14",
@@ -1024,7 +1024,7 @@ module.exports = {
       {
         position: "25",
         number: "155",
-        riderName: "N. Augustin",
+        name: "N. Augustin",
         bike: "KTM",
         hometown: "Fayettevile, NC",
         currentLap: "14",
@@ -1037,7 +1037,7 @@ module.exports = {
       {
         position: "26",
         number: "345",
-        riderName: "J. Prior",
+        name: "J. Prior",
         bike: "GAS",
         hometown: "Hebron, CT",
         currentLap: "14",
@@ -1050,7 +1050,7 @@ module.exports = {
       {
         position: "27",
         number: "951",
-        riderName: "R. Surratt",
+        name: "R. Surratt",
         bike: "HQV",
         hometown: "Corona, CA",
         currentLap: "14",
@@ -1063,7 +1063,7 @@ module.exports = {
       {
         position: "28",
         number: "144",
-        riderName: "N. Rolando",
+        name: "N. Rolando",
         bike: "KTM",
         hometown: "Uruguay",
         currentLap: "14",
@@ -1076,7 +1076,7 @@ module.exports = {
       {
         position: "29",
         number: "441",
-        riderName: "S. Meshey",
+        name: "S. Meshey",
         bike: "HQV",
         hometown: "Zephyrhills, FL",
         currentLap: "14",
@@ -1089,7 +1089,7 @@ module.exports = {
       {
         position: "30",
         number: "647",
-        riderName: "M. Hubert",
+        name: "M. Hubert",
         bike: "KAW",
         hometown: "Riverside, CA",
         currentLap: "14",
@@ -1102,7 +1102,7 @@ module.exports = {
       {
         position: "31",
         number: "281",
-        riderName: "C. Carsten",
+        name: "C. Carsten",
         bike: "SUZ",
         hometown: "Bayville, NJ",
         currentLap: "14",
@@ -1115,7 +1115,7 @@ module.exports = {
       {
         position: "32",
         number: "248",
-        riderName: "T. Delnicki",
+        name: "T. Delnicki",
         bike: "YAM",
         hometown: "Eastford, CT",
         currentLap: "13",
@@ -1128,7 +1128,7 @@ module.exports = {
       {
         position: "33",
         number: "971",
-        riderName: "B. Brouillard",
+        name: "B. Brouillard",
         bike: "KAW",
         hometown: "Brooklyn, CT",
         currentLap: "13",
@@ -1141,7 +1141,7 @@ module.exports = {
       {
         position: "34",
         number: "43",
-        riderName: "F. Noren",
+        name: "F. Noren",
         bike: "KTM",
         hometown: "Sweden",
         currentLap: "11",
@@ -1154,7 +1154,7 @@ module.exports = {
       {
         position: "35",
         number: "391",
-        riderName: "R. Schroyer",
+        name: "R. Schroyer",
         bike: "HON",
         hometown: "Ottawa Lake, MI",
         currentLap: "11",
@@ -1167,7 +1167,7 @@ module.exports = {
       {
         position: "36",
         number: "746",
-        riderName: "T. Schmidt",
+        name: "T. Schmidt",
         bike: "KTM",
         hometown: "Rochester, NY",
         currentLap: "10",
@@ -1180,7 +1180,7 @@ module.exports = {
       {
         position: "37",
         number: "637",
-        riderName: "R. Piazza",
+        name: "R. Piazza",
         bike: "YAM",
         hometown: "Easton, PA",
         currentLap: "9",
@@ -1193,7 +1193,7 @@ module.exports = {
       {
         position: "38",
         number: "83",
-        riderName: "A. Ray",
+        name: "A. Ray",
         bike: "KAW",
         hometown: "Atwood, TN",
         currentLap: "8",
@@ -1206,7 +1206,7 @@ module.exports = {
       {
         position: "39",
         number: "483",
-        riderName: "B. Carroll",
+        name: "B. Carroll",
         bike: "YAM",
         hometown: "Vineland, NJ",
         currentLap: "5",
@@ -1219,7 +1219,7 @@ module.exports = {
       {
         position: "40",
         number: "7",
-        riderName: "A. Plessinger",
+        name: "A. Plessinger",
         bike: "YAM",
         hometown: "Hamilton, OH",
         currentLap: "1",
@@ -1234,7 +1234,7 @@ module.exports = {
       {
         position: "1",
         number: "3",
-        riderName: "E. Tomac",
+        name: "E. Tomac",
         bike: "KAW",
         hometown: "Cortez, CO",
         currentLap: "15",
@@ -1247,7 +1247,7 @@ module.exports = {
       {
         position: "2",
         number: "94",
-        riderName: "K. Roczen",
+        name: "K. Roczen",
         bike: "HON",
         hometown: "Germany",
         currentLap: "15",
@@ -1260,7 +1260,7 @@ module.exports = {
       {
         position: "5",
         number: "2",
-        riderName: "C. Webb",
+        name: "C. Webb",
         bike: "KTM",
         hometown: "Newport, NC",
         currentLap: "15",
@@ -1273,7 +1273,7 @@ module.exports = {
       {
         position: "3",
         number: "14",
-        riderName: "D. Ferrandis",
+        name: "D. Ferrandis",
         bike: "YAM",
         hometown: "France",
         currentLap: "15",
@@ -1286,7 +1286,7 @@ module.exports = {
       {
         position: "6",
         number: "9",
-        riderName: "A. Cianciarulo",
+        name: "A. Cianciarulo",
         bike: "KAW",
         hometown: "Montverde, FL",
         currentLap: "15",
@@ -1299,7 +1299,7 @@ module.exports = {
       {
         position: "7",
         number: "25",
-        riderName: "M. Musquin",
+        name: "M. Musquin",
         bike: "KTM",
         hometown: "France",
         currentLap: "15",
@@ -1312,7 +1312,7 @@ module.exports = {
       {
         position: "8",
         number: "23",
-        riderName: "C. Sexton",
+        name: "C. Sexton",
         bike: "HON",
         hometown: "La Moille, IL",
         currentLap: "15",
@@ -1325,7 +1325,7 @@ module.exports = {
       {
         position: "13",
         number: "29",
-        riderName: "C. Craig",
+        name: "C. Craig",
         bike: "YAM",
         hometown: "Temecula, CA",
         currentLap: "15",
@@ -1338,7 +1338,7 @@ module.exports = {
       {
         position: "4",
         number: "51",
-        riderName: "J. Barcia",
+        name: "J. Barcia",
         bike: "GAS",
         hometown: "Greenville, FL",
         currentLap: "15",
@@ -1351,7 +1351,7 @@ module.exports = {
       {
         position: "10",
         number: "17",
-        riderName: "J. Savatgy",
+        name: "J. Savatgy",
         bike: "KTM",
         hometown: "Clermont, FL",
         currentLap: "15",
@@ -1364,7 +1364,7 @@ module.exports = {
       {
         position: "14",
         number: "376",
-        riderName: "C. Canning",
+        name: "C. Canning",
         bike: "KTM",
         hometown: "Conventry, CT",
         currentLap: "14",
@@ -1377,7 +1377,7 @@ module.exports = {
       {
         position: "9",
         number: "15",
-        riderName: "D. Wilson",
+        name: "D. Wilson",
         bike: "HQV",
         hometown: "United Kingdom",
         currentLap: "15",
@@ -1390,7 +1390,7 @@ module.exports = {
       {
         position: "12",
         number: "34",
-        riderName: "M. Anstie",
+        name: "M. Anstie",
         bike: "SUZ",
         hometown: "United Kingdom",
         currentLap: "15",
@@ -1403,7 +1403,7 @@ module.exports = {
       {
         position: "11",
         number: "28",
-        riderName: "B. Hartranft",
+        name: "B. Hartranft",
         bike: "SUZ",
         hometown: "Brick, NJ",
         currentLap: "15",
@@ -1416,7 +1416,7 @@ module.exports = {
       {
         position: "15",
         number: "19",
-        riderName: "J. Bogle",
+        name: "J. Bogle",
         bike: "KTM",
         hometown: "Cushing, OK",
         currentLap: "14",
@@ -1429,7 +1429,7 @@ module.exports = {
       {
         position: "34",
         number: "43",
-        riderName: "F. Noren",
+        name: "F. Noren",
         bike: "KTM",
         hometown: "Sweden",
         currentLap: "11",
@@ -1442,7 +1442,7 @@ module.exports = {
       {
         position: "21",
         number: "11",
-        riderName: "K. Chisholm",
+        name: "K. Chisholm",
         bike: "YAM",
         hometown: "Valrico, FL",
         currentLap: "14",
@@ -1455,7 +1455,7 @@ module.exports = {
       {
         position: "18",
         number: "315",
-        riderName: "C. Groves",
+        name: "C. Groves",
         bike: "YAM",
         hometown: "Goldsboro, MD",
         currentLap: "14",
@@ -1468,7 +1468,7 @@ module.exports = {
       {
         position: "20",
         number: "97",
-        riderName: "B. LaMay",
+        name: "B. LaMay",
         bike: "KTM",
         hometown: "Anchorage, AK",
         currentLap: "14",
@@ -1481,7 +1481,7 @@ module.exports = {
       {
         position: "16",
         number: "57",
-        riderName: "J. Rodbell",
+        name: "J. Rodbell",
         bike: "KAW",
         hometown: "Prince Frederick, MD",
         currentLap: "14",
@@ -1494,7 +1494,7 @@ module.exports = {
       {
         position: "17",
         number: "314",
-        riderName: "T. Stepek",
+        name: "T. Stepek",
         bike: "KAW",
         hometown: "Mount Airy, MD",
         currentLap: "14",
@@ -1507,7 +1507,7 @@ module.exports = {
       {
         position: "38",
         number: "83",
-        riderName: "A. Ray",
+        name: "A. Ray",
         bike: "KAW",
         hometown: "Atwood, TN",
         currentLap: "8",
@@ -1520,7 +1520,7 @@ module.exports = {
       {
         position: "22",
         number: "919",
-        riderName: "B. Borghesani",
+        name: "B. Borghesani",
         bike: "GAS",
         hometown: "Plymouth, MA",
         currentLap: "14",
@@ -1533,7 +1533,7 @@ module.exports = {
       {
         position: "19",
         number: "270",
-        riderName: "J. Runkles",
+        name: "J. Runkles",
         bike: "GAS",
         hometown: "Sykesville, MD",
         currentLap: "14",
@@ -1546,7 +1546,7 @@ module.exports = {
       {
         position: "29",
         number: "441",
-        riderName: "S. Meshey",
+        name: "S. Meshey",
         bike: "HQV",
         hometown: "Zephyrhills, FL",
         currentLap: "14",
@@ -1559,7 +1559,7 @@ module.exports = {
       {
         position: "26",
         number: "345",
-        riderName: "J. Prior",
+        name: "J. Prior",
         bike: "GAS",
         hometown: "Hebron, CT",
         currentLap: "14",
@@ -1572,7 +1572,7 @@ module.exports = {
       {
         position: "37",
         number: "637",
-        riderName: "R. Piazza",
+        name: "R. Piazza",
         bike: "YAM",
         hometown: "Easton, PA",
         currentLap: "9",
@@ -1585,7 +1585,7 @@ module.exports = {
       {
         position: "30",
         number: "647",
-        riderName: "M. Hubert",
+        name: "M. Hubert",
         bike: "KAW",
         hometown: "Riverside, CA",
         currentLap: "14",
@@ -1598,7 +1598,7 @@ module.exports = {
       {
         position: "25",
         number: "155",
-        riderName: "N. Augustin",
+        name: "N. Augustin",
         bike: "KTM",
         hometown: "Fayettevile, NC",
         currentLap: "14",
@@ -1611,7 +1611,7 @@ module.exports = {
       {
         position: "24",
         number: "148",
-        riderName: "B. Hansen",
+        name: "B. Hansen",
         bike: "KAW",
         hometown: "Kaukauna, WI",
         currentLap: "14",
@@ -1624,7 +1624,7 @@ module.exports = {
       {
         position: "23",
         number: "489",
-        riderName: "R. Randanella",
+        name: "R. Randanella",
         bike: "KAW",
         hometown: "Marlton, NJ",
         currentLap: "14",
@@ -1637,7 +1637,7 @@ module.exports = {
       {
         position: "28",
         number: "144",
-        riderName: "N. Rolando",
+        name: "N. Rolando",
         bike: "KTM",
         hometown: "Uruguay",
         currentLap: "14",
@@ -1650,7 +1650,7 @@ module.exports = {
       {
         position: "27",
         number: "951",
-        riderName: "R. Surratt",
+        name: "R. Surratt",
         bike: "HQV",
         hometown: "Corona, CA",
         currentLap: "14",
@@ -1663,7 +1663,7 @@ module.exports = {
       {
         position: "31",
         number: "281",
-        riderName: "C. Carsten",
+        name: "C. Carsten",
         bike: "SUZ",
         hometown: "Bayville, NJ",
         currentLap: "14",
@@ -1676,7 +1676,7 @@ module.exports = {
       {
         position: "36",
         number: "746",
-        riderName: "T. Schmidt",
+        name: "T. Schmidt",
         bike: "KTM",
         hometown: "Rochester, NY",
         currentLap: "10",
@@ -1689,7 +1689,7 @@ module.exports = {
       {
         position: "32",
         number: "248",
-        riderName: "T. Delnicki",
+        name: "T. Delnicki",
         bike: "YAM",
         hometown: "Eastford, CT",
         currentLap: "13",
@@ -1702,7 +1702,7 @@ module.exports = {
       {
         position: "33",
         number: "971",
-        riderName: "B. Brouillard",
+        name: "B. Brouillard",
         bike: "KAW",
         hometown: "Brooklyn, CT",
         currentLap: "13",
@@ -1715,7 +1715,7 @@ module.exports = {
       {
         position: "39",
         number: "483",
-        riderName: "B. Carroll",
+        name: "B. Carroll",
         bike: "YAM",
         hometown: "Vineland, NJ",
         currentLap: "5",
@@ -1728,7 +1728,7 @@ module.exports = {
       {
         position: "35",
         number: "391",
-        riderName: "R. Schroyer",
+        name: "R. Schroyer",
         bike: "HON",
         hometown: "Ottawa Lake, MI",
         currentLap: "11",
@@ -1741,7 +1741,7 @@ module.exports = {
       {
         position: "40",
         number: "7",
-        riderName: "A. Plessinger",
+        name: "A. Plessinger",
         bike: "YAM",
         hometown: "Hamilton, OH",
         currentLap: "1",
@@ -1757,7 +1757,7 @@ module.exports = {
     fastLapLeader: {
       position: "1",
       number: "3",
-      riderName: "E. Tomac",
+      name: "E. Tomac",
       bike: "KAW",
       hometown: "Cortez, CO",
       currentLap: "15",

@@ -25,7 +25,7 @@ export const calculateTotal = (userPicks) => {
 export const checkSame = (userPick, topFive) => {
   return topFive.find(
     (result) =>
-      result.riderName.trim() === userPick.riderName.trim() &&
+      result.name.trim() === userPick.name.trim() &&
       result.position === userPick.position
   );
 };
@@ -33,16 +33,16 @@ export const checkSame = (userPick, topFive) => {
 export const checkDifferent = (userPick, topFive) => {
   return topFive.find(
     (result) =>
-      result.riderName.trim() === userPick.riderName.trim() &&
+      result.name.trim() === userPick.name.trim() &&
       result.position !== userPick.position
   );
 };
 
 export const checkKickers = (userPick, kickers) => {
-  const initialized = userPick.riderName.split(' ').reduce((a, c, i) => i === 0 ? a += `${c[0]}. ` : a += c, '');
+  const initialized = userPick.name.split(' ').reduce((a, c, i) => i === 0 ? a += `${c[0]}. ` : a += c, '');
   return kickers.find(
     (result) =>
-      (result.riderName.trim() === userPick.riderName.trim() || initialized === result.riderName.trim()) &&
+      (result.name.trim() === userPick.name.trim() || initialized === result.name.trim()) &&
       result.position === userPick.position
   );
 };

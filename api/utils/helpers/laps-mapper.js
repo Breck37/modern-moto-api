@@ -34,7 +34,7 @@ const formatTime = (riderWithLapTime) => {
 
     return {
       ...riderWithLapTime,
-      rider: riderWithLapTime.riderName.trim(),
+      rider: riderWithLapTime.name.trim(),
       lap: `${minutes}:${diff.split(".")[0].length === 1 ? "0" : ""}${diff}`,
       bike: riderWithLapTime.bike.split(" ")[0],
     };
@@ -42,7 +42,7 @@ const formatTime = (riderWithLapTime) => {
 
   return {
     ...riderWithLapTime,
-    rider: riderWithLapTime.riderName.trim(),
+    rider: riderWithLapTime.name.trim(),
     lap: riderWithLapTime.bestLap,
     bike: riderWithLapTime.bike.split(" ")[0],
   };
